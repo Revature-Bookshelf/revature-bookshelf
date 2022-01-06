@@ -1,16 +1,13 @@
 package com.revature.revaturebookshelfjava.repository;
 
-
-
 import com.revature.revaturebookshelfjava.entity.User;
-import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
+public interface UserRepository extends JpaRepository<User,Integer> {
+    // TODO: Optional<T> usage
+    User findByEmail(String username);
 
-@EnableMongoRepositories
-public interface UserRepository extends MongoRepository<User, String> {
-    User findByEmail(String email);
+    // save() is native to JpaRespository<T,U>
 }

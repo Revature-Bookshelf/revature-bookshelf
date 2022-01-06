@@ -3,7 +3,6 @@ package com.revature.revaturebookshelfjava.controller;
 
 import com.revature.revaturebookshelfjava.entity.User;
 import com.revature.revaturebookshelfjava.repository.UserRepository;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

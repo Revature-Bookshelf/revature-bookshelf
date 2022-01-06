@@ -1,23 +1,23 @@
 package com.revature.revaturebookshelfjava.entity;
 
+import jdk.jfr.Name;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "authorities")
+public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToOne(optional = false)
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
-    private double total;
+    @Column(unique = true)
+    @NotNull
+    private String name;
 }

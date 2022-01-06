@@ -1,9 +1,9 @@
 package com.revature.revaturebookshelfjava.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 
@@ -11,13 +11,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "store_inventory")
+public class StoreProduct {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
+    @JsonIgnore
     private int id;
     @OneToOne(optional = false)
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
-    private double total;
+    @JoinColumn(name = "book_id")
+    private Book book;
+    private int quantity;
+    private float price;
 }

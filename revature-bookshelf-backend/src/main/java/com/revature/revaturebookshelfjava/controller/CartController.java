@@ -29,7 +29,7 @@ public class CartController {
     }
 
     @GetMapping("/{userId}")
-    public Cart viewCartByUserId(@PathVariable String userId){
+    public Cart viewCartByUserId(@PathVariable int userId){
         Optional<Cart> optCart=cartRepository.findByUserId(userId);
         if(optCart.isEmpty()){
             Cart cart = new Cart();

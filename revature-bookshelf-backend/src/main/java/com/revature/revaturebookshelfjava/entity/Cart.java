@@ -1,21 +1,32 @@
 package com.revature.revaturebookshelfjava.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.persistence.*;
 import java.util.List;
 
-@Data
+@AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "cart")
+@Data
+@Entity
+@Table(name = "carts")
 public class Cart  {
     @Id
-    private String id;
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "user_id")
+    private User user;
+    @ManyToMany
+    @JoinTable( name = "cart_join",
+    joinColumns = { @JoinColumn(name = "cart_id")},
+    inverseJoinColumns = { @JoinColumn(name = "book_id")})
     private List<Book> books;
 
-    public Cart(String id) {
+    public Cart(int id) {
         this.id = id;
     }
 }

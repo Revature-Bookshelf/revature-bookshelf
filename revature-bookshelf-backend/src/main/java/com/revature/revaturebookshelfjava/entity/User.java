@@ -3,34 +3,33 @@ package com.revature.revaturebookshelfjava.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.persistence.*;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Document(collection="users")
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
-    @Indexed(unique = true)
+    @Column(unique = true)
     private String email;
-    @Indexed(unique = true)
+    @Column(unique = true)
     private String username;
-    @Field
     private String password;
-    @Field
     private String firstName;
-    @Field
     private String middleName;
-    @Field
     private String lastName;
+    @ManyToMany
+    @JoinTable(name = "auth_join",
+    joinColumns = { @JoinColumn(name = "user_id")},
+    inverseJoinColumns = { @JoinColumn(name = "auth_id")})
     private List<String> authorities;
 
     @Override

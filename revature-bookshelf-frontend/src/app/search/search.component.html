@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="main-body">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-body">
+            <div class="row mb-3">
+              <h5 class="mb-0">Advanced Search</h5>
+              <div class="col-sm-3">
+                <h6 class="mb-0">Enter your search query and select optional filters</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input type="text" class="form-control" value="Search">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Search by:</h6>
+                  <input type="radio" id="title" name="search" value="huey"
+                         checked>
+                  <label for="title">Title</label>
+
+                  <input type="radio" id="Author" name="search" value="author">
+                    <label for="author">Author</label>
+
+                  <input type="radio" id="ISBN" name="search" value="isbn">
+                  <label for="isbn">ISBN</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <fieldset>
+                  <legend>Genres</legend>
+                  <div>
+                    <input type="checkbox" id="fiction" name="genres" value="fiction">
+                    <label for="fiction">Fiction</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="nonfiction" name="genres" value="nonfiction">
+                    <label for="nonfiction">Non-fiction</label>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Publication Date</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input type="text" class="form-control" value="From date">
+                <input type="text" class="form-control" value="To date">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Page Count</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input type="text" class="form-control" value="Minimum Pages">
+                <input type="text" class="form-control" value="Maximum Pages">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Price</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input type="text" class="form-control" value="Minimum Price">
+                <input type="text" class="form-control" value="Maximum Price">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-9 text-secondary">
+                <input type="button" class="btn btn-primary px-4" value="Submit Search">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

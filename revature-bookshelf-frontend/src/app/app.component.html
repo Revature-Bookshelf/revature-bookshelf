@@ -1,0 +1,202 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img class="logo" src="../assets/rev-logo(1).png" alt="Revature logo" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#main-navbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="main-navbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Placeholder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Placeholder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Placeholder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Placeholder</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="find your next book..."
+          />
+          <button class="btn btn-warning btn-sm" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container pt-5">
+    <ng-container class="row">
+      <h1 class="main-heading">
+        Welcome to <br />
+        Revature Bookshelf
+      </h1>
+      <ng-container class="col-sm-4" *ngIf="!isLoggedIn">
+        <a
+          type="button"
+          class="btn btn-light btn-lg m-3"
+          routerLinkActive="active"
+          [routerLink]="['/login']"
+          value="submit"
+        >
+          Login
+        </a>
+        <a
+          type="button"
+          class="btn btn-outline-light btn-lg m-3"
+          value="submit"
+        >
+          Sign up
+        </a>
+      </ng-container>
+    </ng-container>
+  </div>
+</header>
+
+<!-- Feature Section -->
+<section class="feature-section mt-4">
+  <div class="container">
+    <h2 class="display-2 p-3 text-center">Membership Exclusives</h2>
+    <div class="row mx-auto">
+      <div class="card col">
+        <img
+          class="card-img-top"
+          src="../assets/Hands - Book.png"
+          alt="book illustration"
+        />
+        <div class="card-body">
+          <h3 class="card-title text-center">Huge Selection</h3>
+          <p>
+            We have thousands of popular titles to choose from. Praesent
+            ullamcorper tortor nec diam congue, eget elementum ligula vulputate.
+            Cras ac diam tellus. Cras quis rhoncus mi, vitae consequat elit.
+            Cras convallis est mi, in sollicitudin metus lobortis et.
+            Suspendisse potenti.
+          </p>
+        </div>
+      </div>
+
+      <div class="card col">
+        <img
+          class="card-img-top"
+          src="../assets/Humaaans - 3 Characters.png"
+          alt="illustration of three people"
+        />
+        <div class="card-body">
+          <h3 class="card-title text-center">Early Releases</h3>
+          <p>
+            Read the latest titles by your favorite author before they are
+            released to the public. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Phasellus quam neque, suscipit non nisi eu,
+            sagittis commodo nulla. Nulla eu nibh nisl. Suspendisse dignissim
+            ornare placerat.
+          </p>
+        </div>
+      </div>
+
+      <div class="card col">
+        <img
+          class="card-img-top"
+          src="../assets/Hands - Give.png"
+          alt="illustration of hand holding money"
+        />
+        <div class="card-body">
+          <h3 class="card-title text-center">Lowest Price Guarantee</h3>
+          <p>
+            We will match any of our competitors promotions, so you always get
+            the lowest price. Integer nec magna nulla. Phasellus posuere, augue
+            vitae ullamcorper egestas, diam risus consectetur enim, ac tincidunt
+            neque lorem sit amet augue.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-dark text-light">
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <div class="row mt-3">
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Branding -->
+          <a href="#"
+            ><img
+              class="logo mb-3"
+              src="../assets/rev-logo(1).png"
+              alt="Revature logo"
+          /></a>
+
+          <p>
+            Hopscotch Will Smith flexitarian prism, shoreditch chambray semi
+            readymade kale chips succulents. 8-bit Slytherin static div
+            elements.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">Popular Genres</h6>
+          <p>
+            <a href="#!" class="text-reset">Sci-fi/Fantasy</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Mystery</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Cooking</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Business</a>
+          </p>
+        </div>
+
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
+          <p>
+            <a href="#" class="text-reset">News</a>
+          </p>
+          <p>
+            <a href="#" class="text-reset">Promotions</a>
+          </p>
+          <p>
+            <a href="#" class="text-reset">Forums</a>
+          </p>
+          <p>
+            <a href="#" class="text-reset">Help</a>
+          </p>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">Contact Us</h6>
+          <p>1800 Development Drive</p>
+          <p>Reston, VA 20190</p>
+          <p>contact@revaturebookshelf.com</p>
+          <p>(703) 555-1234</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Copyright -->
+  <div class="text-center p-2">Copyright © 2022 Revature Bookshelf</div>
+</footer>
+
+<router-outlet></router-outlet>
+<!-- <app-edit-profile></app-edit-profile> -->

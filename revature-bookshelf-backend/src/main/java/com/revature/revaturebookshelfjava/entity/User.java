@@ -1,5 +1,6 @@
 package com.revature.revaturebookshelfjava.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,14 @@ public class User {
     joinColumns = { @JoinColumn(name = "user_id")},
     inverseJoinColumns = { @JoinColumn(name = "auth_id")})
     private List<String> authorities;
+    @OneToOne(mappedBy = "user")
+    @JsonIgnore
+    private Cart cart;
+    @ManyToMany()
+    @JoinTable(name = "address_join",
+    joinColumns = { @JoinColumn(name = "user_id")},
+    inverseJoinColumns = { @JoinColumn(name = "address_id")})
+    private List<Address> addresses;
 
     @Override
     public String toString() {

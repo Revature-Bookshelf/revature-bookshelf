@@ -1,12 +1,13 @@
 package com.revature.revaturebookshelfjava.entity;
 
-import jdk.jfr.Name;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,8 +17,12 @@ import javax.validation.constraints.NotNull;
 public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private int id;
     @Column(unique = true)
     @NotNull
     private String name;
+    @ManyToMany(mappedBy = "authorities")
+    @JsonIgnore
+    private List<User> user;
 }

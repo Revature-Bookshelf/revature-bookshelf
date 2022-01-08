@@ -18,7 +18,6 @@ import java.util.List;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private int id;
     @Column(unique = true)
     @NotNull
@@ -42,6 +41,8 @@ public class Book {
     joinColumns = { @JoinColumn (name = "book_id")},
     inverseJoinColumns = { @JoinColumn (name = "user_id")})
     private List<User> owners;
+    @OneToOne(mappedBy = "book")
+    private StoreProduct priceAndQuantity;
 
     public Book(String title, int pageCount, Date publishDate, String isbn, String author, List<Genre> genres, String imgPath) {
         this.title = title;

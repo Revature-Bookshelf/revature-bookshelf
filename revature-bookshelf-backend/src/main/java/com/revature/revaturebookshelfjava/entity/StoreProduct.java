@@ -16,11 +16,10 @@ public class StoreProduct {
 
     @Id
     @Column(name = "book_id")
-    @JsonIgnore
     private int id;
     @OneToOne(optional = false)
     @JoinColumn(name = "book_id")
     private Book book;
     private int quantity;
-    private float price;
+    private double price;
 }

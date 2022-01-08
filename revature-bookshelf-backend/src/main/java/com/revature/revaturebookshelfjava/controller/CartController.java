@@ -17,8 +17,6 @@ import java.util.Optional;
 @Slf4j
 @RequestMapping("/cart")
 public class CartController {
-//    @Autowired
-//    private RestTemplate restTemplate;
 
     @Autowired
     private CartRepository cartRepository;
@@ -33,9 +31,9 @@ public class CartController {
         Optional<Cart> optCart=cartRepository.findByUserId(userId);
         if(optCart.isEmpty()){
             Cart cart = new Cart();
-            cart.setUserId(userId);
+        //    cart.setUserId(userId);     *****REVIEW THIS LINE AND BLOCK*****
 //            cart = cartRepository.findByUserId(userId).stream().findFirst().get();
-            log.info("inside viewCartByUserId in controller because cart dont exist for that user");
+            log.info("inside viewCartByUserId in controller because cart doesn't exist for that user");
             return cartRepository.save(cart);
         } else{
 //            Cart crt=

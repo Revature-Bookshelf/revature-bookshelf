@@ -25,6 +25,8 @@ public class Cart  {
     joinColumns = { @JoinColumn(name = "cart_id")},
     inverseJoinColumns = { @JoinColumn(name = "book_id")})
     private List<Book> books;
+    @OneToMany(mappedBy = "cart")
+    private List<Order> orders;
 
     public Cart(int id) {
         this.id = id;

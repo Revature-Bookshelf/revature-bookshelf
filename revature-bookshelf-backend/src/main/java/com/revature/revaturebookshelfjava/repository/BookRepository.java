@@ -2,26 +2,24 @@ package com.revature.revaturebookshelfjava.repository;
 
 
 import com.revature.revaturebookshelfjava.entity.Book;
-import org.springframework.data.mongodb.core.query.Collation;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
+import com.revature.revaturebookshelfjava.entity.Genre;
+import com.revature.revaturebookshelfjava.entity.StoreProduct;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.Collection;
 import java.util.List;
 
 
-public interface BookRepository extends MongoRepository<Book, Integer> {
+public interface BookRepository extends JpaRepository<Book, Integer> {
 
+    @Query("from StoreProduct")
+    List<StoreProduct> findAllAvailable();
 
-    @Query(  "  {  quantity: {$gt: 0 }  }    "  )
-    List<Book> findAllAvailable();
+    @Query("from Book b where join b.genres g where g.name=:genre_name")
+    List<Book> findSelectGenre(String genre_name);
 
-    @Query(  "  { genre: ?0 }")
-    List<Book> findSelectGenre(String _genre);
-
-    @Query(value = " { 'genre': {$ne: false }}", fields = "{ 'id':0, 'title':0, 'pageCount':0, 'isbn':0, 'author':0, 'imgPath':0, '_class':0, 'quantity':0, 'price':0 } + ")
-    List<String> findAllGenres();
-
+    @Query("from Genre")
+    List<Genre> findAllGenres();
 
 }

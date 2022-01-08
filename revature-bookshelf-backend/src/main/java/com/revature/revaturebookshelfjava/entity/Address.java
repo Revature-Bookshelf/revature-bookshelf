@@ -3,23 +3,24 @@ package com.revature.revaturebookshelfjava.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "addresses")
+public class Address {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "cart_id")
-    @NotNull
-    private Cart cart;
-    private double total;
+    private String city;
+    private String country;
+    private String streetName;
+    private String postalCode;
+    private String type;
+    @ManyToMany(mappedBy = "addresses")
+    private User user;
 }

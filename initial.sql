@@ -5,19 +5,27 @@ use monoDB;
 CREATE TABLE users ( 
 id int PRIMARY KEY auto_increment, 
 first_name varchar(25) NOT NULL,
+middle_name varchar(25),
 last_name varchar(25) NOT NULL,
 email varchar(50) UNIQUE NOT NULL, 
 password varchar(128) NOT NULL
 );
 
-CREATE TABLE user_roles (
+CREATE TABLE authorities (
 	id int PRIMARY KEY auto_increment,
-	authorities varchar(255) NOT NULL,
-	user_id int, FOREIGN KEY (user_id) REFERENCES users(id)
+	authority varchar(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE user_authority (
+	user_id int, FOREIGN KEY (user_id) REFERENCES users(id),
+	authority_id int, FOREIGN KEY (authority_id) REFERENCES authorities(id)
 );
 
 INSERT INTO users (first_name,last_name, email, password)
 VALUES ('test1First','test1Last', 'test1@mail.com', '$2a$10$gXY.y5B45WeaObTSzLW8nuWY0YvxUWyABtleHvz9UzGm9LauNJ04W');
 
-INSERT INTO user_roles (user_id, authorities)
-VALUES (1,'ROLE_USER');
+INSERT INTO authorities (authority) 
+VALUES ('ROLE_USER');
+
+INSERT INTO user_authority (user_id, authority_id)
+VALUES (1,1);

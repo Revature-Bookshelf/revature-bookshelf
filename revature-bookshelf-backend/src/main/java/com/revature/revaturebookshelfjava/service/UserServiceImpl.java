@@ -1,7 +1,10 @@
 package com.revature.revaturebookshelfjava.service;
 
+import com.revature.revaturebookshelfjava.entity.Authority;
 import com.revature.revaturebookshelfjava.entity.User;
+import com.revature.revaturebookshelfjava.repository.AuthRepository;
 import com.revature.revaturebookshelfjava.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,12 +18,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService, UserDetailsService{
 
 //    @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    private AuthRepository authRepository;
 //    @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -35,9 +43,16 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 
     @Override
     public void register(User user) {
-    // Input User with plain-text password
+        // Input User with plain-text password
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
+
+        // Checking for existing authorities based
+        // TODO: USE STREAM API
+        Optional<Authority> result = authRepository.findByAuthority(user.getAuthorities().iterator().next().getAuthority());
+        if (result != null){ // Existing Record
+            user.setAuthorities(List.of(result.get()));
+        }
         userRepository.save(user);
     }
 
@@ -49,10 +64,11 @@ public class UserServiceImpl implements UserService, UserDetailsService{
         if(user==null)throw new UsernameNotFoundException(username);
 
         ArrayList<GrantedAuthority> grantedAuthorities=new ArrayList<>();
-        for(String authority:user.getAuthorities()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(authority));
+        for(Authority authority:user.getAuthorities()){
+            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(), grantedAuthorities);
+        log.info(user.toString());
+       return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(), grantedAuthorities);
     }
 
 

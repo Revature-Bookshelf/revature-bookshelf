@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,9 +20,18 @@ public class User {
     private int id;
     private String email;
     private String password;
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_roles", foreignKey = @ForeignKey(name = "user_id"))
-    private List<String> authorities;
+//    @ElementCollection(fetch = FetchType.EAGER)
+//    @CollectionTable(name = "user_roles", foreignKey = @ForeignKey(name = "user_id"))
+//    private List<String> authorities;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "user_authority",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name ="authority_id")
+    )
+    private List<Authority> authorities;
+
     // Fun Information
     private String firstName;
     private String middleName;

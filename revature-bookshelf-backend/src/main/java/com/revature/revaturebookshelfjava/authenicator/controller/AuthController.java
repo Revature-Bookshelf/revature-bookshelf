@@ -3,6 +3,7 @@ package com.revature.revaturebookshelfjava.authenicator.controller;
 import com.revature.revaturebookshelfjava.authenicator.model.AuthRequest;
 import com.revature.revaturebookshelfjava.authenicator.model.AuthResponse;
 import com.revature.revaturebookshelfjava.authenicator.utils.JwtUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = {"*"})
+@Slf4j
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;

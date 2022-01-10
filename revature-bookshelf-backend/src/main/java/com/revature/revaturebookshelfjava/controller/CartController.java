@@ -22,8 +22,7 @@ public class CartController {
 
     @GetMapping("/view")
     public Collection<Cart> getAll(){
-        Collection<Cart> books = cartRepository.findAll();
-        return books;
+        return cartRepository.findAll();
     }
 
     @PostMapping("/add")

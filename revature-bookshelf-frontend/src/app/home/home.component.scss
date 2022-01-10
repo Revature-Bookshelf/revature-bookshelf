@@ -1,0 +1,58 @@
+// Headings
+@import '../app.component.scss';
+
+.main-heading {
+    color: $secondary-yllw;
+    font-size: 5rem;
+  }
+  
+  .feature-title {
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 2rem;
+  }
+  
+  h3 {
+    color: $primary-org;
+  }
+
+  
+  // Buttons
+  .btn {
+    width: 115px;
+    height: auto;
+  }
+  
+  // Hero Section
+  header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url(../../assets/shiromani-kant-mo3FOTG62ao-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+  }
+  
+  .hero-container {
+    margin: 9rem 0 0 6rem;
+  }
+  
+  // Slideshow Section
+  
+  // Feature Section
+  .card {
+    border: none;
+  }
+  
+  .card img {
+    width: 350px;
+    height: 350px;
+  }
+  
+  // Footer
+  footer {
+    font-size: 90%;
+  }
+  
+  footer h6 {
+    color: $primary-org;
+  }

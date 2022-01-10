@@ -1,0 +1,70 @@
+<header>
+    <div class="container pt-5">
+        <ng-container class="row">
+            <h1 class="main-heading">
+                Welcome to <br />
+                Revature Bookshelf
+            </h1>
+            <ng-container class="col-sm-4" *ngIf="!isLoggedIn">
+                <a type="button" class="btn btn-light btn-lg m-3" routerLinkActive="active" [routerLink]="['/login']"
+                    value="submit">
+                    Login
+                </a>
+                <a type="button" class="btn btn-outline-light btn-lg m-3" value="submit">
+                    Sign up
+                </a>
+            </ng-container>
+        </ng-container>
+    </div>
+</header>
+
+<!-- Feature Section -->
+<section class="feature-section mt-4">
+    <div class="container">
+        <h2 class="display-2 p-3 text-center">Membership Exclusives</h2>
+        <div class="row mx-auto">
+            <div class="card col">
+                <img class="card-img-top" src="../../assets/Hands - Book.png" alt="book illustration" />
+                <div class="card-body">
+                    <h3 class="card-title text-center">Huge Selection</h3>
+                    <p>
+                        We have thousands of popular titles to choose from. Praesent
+                        ullamcorper tortor nec diam congue, eget elementum ligula vulputate.
+                        Cras ac diam tellus. Cras quis rhoncus mi, vitae consequat elit.
+                        Cras convallis est mi, in sollicitudin metus lobortis et.
+                        Suspendisse potenti.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card col">
+                <img class="card-img-top" src="../../assets/Humaaans - 3 Characters.png"
+                    alt="illustration of three people" />
+                <div class="card-body">
+                    <h3 class="card-title text-center">Early Releases</h3>
+                    <p>
+                        Read the latest titles by your favorite author before they are
+                        released to the public. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Phasellus quam neque, suscipit non nisi eu,
+                        sagittis commodo nulla. Nulla eu nibh nisl. Suspendisse dignissim
+                        ornare placerat.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card col">
+                <img class="card-img-top" src="../../assets/Hands - Give.png"
+                    alt="illustration of hand holding money" />
+                <div class="card-body">
+                    <h3 class="card-title text-center">Lowest Price Guarantee</h3>
+                    <p>
+                        We will match any of our competitors promotions, so you always get
+                        the lowest price. Integer nec magna nulla. Phasellus posuere, augue
+                        vitae ullamcorper egestas, diam risus consectetur enim, ac tincidunt
+                        neque lorem sit amet augue.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

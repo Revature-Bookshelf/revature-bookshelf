@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface AddressTypeRepository extends JpaRepository<AddressType, Integer> {
 
-    //Optional<AddressType> findByType(String type);
-    AddressType findByType(String type);
+    Optional<AddressType> findByType(String type);
+//    AddressType findByType(String type);
 }

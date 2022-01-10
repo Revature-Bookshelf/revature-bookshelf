@@ -56,10 +56,25 @@ public class AddressController {
         String username = extractUsername();
         // call userService.getUser(String username);
         User user = userService.getUser(username);
-        addressService.registerAddress(address, user);
+        try {
+            addressService.registerAddress(address, user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body("user's address posted");
     }
 
+    public ResponseEntity<?> putUserAddress(@RequestBody Address address) {
+        String username = extractUsername();
+        User user = userService.getUser(username);
+        /* Operate on User for editing addresses*/
+        try {
+
+        } catch () {
+
+        }
+    }
     public String extractUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();

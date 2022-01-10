@@ -6,7 +6,6 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookViewComponent } from './book-view/book-view.component';
 import { LoginComponent } from './login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SearchComponent } from './search/search.component';
 import { CartViewComponent } from './cart-view/cart-view.component';
 import { CartAccessComponent } from './cart-access/cart-access.component';
@@ -24,7 +23,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'user-profile', component: UserProfileComponent },
-  { path: 'edit-profile', component: EditProfileComponent },
   { path: 'search', component: SearchComponent },
   { path: 'cart-view', component: CartViewComponent },
   { path: 'cart-access', component: CartAccessComponent },
@@ -37,7 +35,6 @@ const routes: Routes = [
     AppComponent,
     CartViewComponent,
     UserProfileComponent,
-    EditProfileComponent,
     SearchComponent,
     CartAccessComponent,
     BookListComponent,

@@ -32,8 +32,8 @@ public class Address {
     )
     private List<AddressType> types;
 
-//    @ManyToMany(mappedBy = "addresses")
-//    private List<User> user;
+    @ManyToMany(mappedBy = "addresses")
+    private List<User> user;
 
     @Override
     public String toString() {

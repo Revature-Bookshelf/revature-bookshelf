@@ -30,17 +30,17 @@ public class AddressServiceImpl implements AddressService {
         /*
          * Checks:
          *   -incoming address does not exist in database
-         *       - if it does
-         *           -checking addressTypes (BILLING and/or SHIPPING)
+         *       - if (addressTypes in DB)
+         *           - load (BILLING and/or SHIPPING)
          *
          *
          */
         // TODO: USE STREAM API FOR SUPPORT OF MULTIPLE input TYPES
         // Checking Address Types if can be loaded.
         // incoming addressType does not have entity association so if match found, associate
-        AddressType result1 = addressTypeRepository.findByType(address.getTypes().iterator().next().getType());
-        if (result1 != null) {
-            address.setTypes(List.of(result1));
+        AddressType addressTypeQuery = addressTypeRepository.findByType(address.getTypes().iterator().next().getType());
+        if (addressTypeQuery != null) {
+            address.setTypes(List.of(addressTypeQuery));
         }
 
         // Check for existing address
@@ -54,7 +54,7 @@ public class AddressServiceImpl implements AddressService {
             address.setTypes(addressTypeList);
             //address = addressQuery;
         }
-        // TODO: USE STREAM API
+
         // Updating User Entity
         List<Address> addyList = new ArrayList<>(user.getAddresses());
         addyList.add(address);

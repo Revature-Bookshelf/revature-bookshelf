@@ -1,63 +1,48 @@
 package com.revature.revaturebookshelfjava.controller;
 
+
 import com.revature.revaturebookshelfjava.entity.Cart;
 import com.revature.revaturebookshelfjava.repository.CartRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.Optional;
+import java.util.Collection;
 
+@RequestMapping("/cart")
+@CrossOrigin(origins={"http://localhost:4200/"})
 @RestController
 @Slf4j
-@RequestMapping("/cart")
 public class CartController {
 
     @Autowired
     private CartRepository cartRepository;
 
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-
-    @GetMapping("/{userId}")
-    public Cart viewCartByUserId(@PathVariable int userId){
-        Optional<Cart> optCart=cartRepository.findByUserId(userId);
-        if(optCart.isEmpty()){
-            Cart cart = new Cart();
-        //    cart.setUserId(userId);     *****REVIEW THIS LINE AND BLOCK*****
-//            cart = cartRepository.findByUserId(userId).stream().findFirst().get();
-            log.info("inside viewCartByUserId in controller because cart doesn't exist for that user");
-            return cartRepository.save(cart);
-        } else{
-//            Cart crt=
-            log.info("inside viewCartByUserId in controller");
-            return optCart.stream().findFirst().get();
-        }
+    @GetMapping("/view")
+    public Collection<Cart> getAll(){
+        Collection<Cart> books = cartRepository.findAll();
+        return books;
     }
 
     @PostMapping("/add")
-    public Cart addCart(@RequestBody Cart cart){
-        log.info("inside add cart");
-        return cartRepository.save(cart);
+    public ResponseEntity<?> addItem(@RequestBody Cart bookId){
+        cartRepository.save(bookId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(bookId);
     }
 
-    @PutMapping("/empty")
-    public Cart emptyCart(@RequestBody Cart cart){
-        Cart temp = new Cart();
-        temp = cart;
-        cartRepository.delete(cart);
-        temp.getBooks().clear();
-        return cartRepository.save(temp);
+    @DeleteMapping("/delete{bookId}")
+    public ResponseEntity<?> deleteItem(@PathVariable(name = "bookId") int bookId) {
+        cartRepository.deleteById(bookId);
+        return ResponseEntity.ok().build();
     }
 
-//    public ShopBook getBookDetails(int bookId){
-//        return restTemplate.getForObject("",ShopBook.class);
-//    }
+    /*
+    @PutMapping("/update{bookId}")
+    public ResponseEntity<?> updateItem(@PathVariable(name = "bookId") int id, @RequestBody Book bookId){
+        Book book = bookRepository.getById(cartRepository.getById(id));
+        return ResponseEntity.ok(Book);
+    }
+     */
 }

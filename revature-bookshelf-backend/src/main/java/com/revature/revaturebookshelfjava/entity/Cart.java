@@ -13,21 +13,19 @@ import java.util.List;
 @Entity
 @Table(name = "carts")
 public class Cart  {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id")
     private User user;
-    @ManyToMany
+
+    @ManyToOne
     @JoinTable( name = "cart_join",
     joinColumns = { @JoinColumn(name = "cart_id")},
     inverseJoinColumns = { @JoinColumn(name = "book_id")})
-    private List<Book> books;
-    @OneToMany(mappedBy = "cart")
-    private List<Order> orders;
+    private Book books;
 
-    public Cart(int id) {
-        this.id = id;
-    }
 }

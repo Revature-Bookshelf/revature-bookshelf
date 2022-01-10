@@ -1,0 +1,68 @@
+package com.revature.revaturebookshelfjava.controller;
+
+import com.revature.revaturebookshelfjava.entity.Address;
+import com.revature.revaturebookshelfjava.entity.User;
+import com.revature.revaturebookshelfjava.service.AddressService;
+import com.revature.revaturebookshelfjava.service.UserService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.security.Principal;
+
+
+@Slf4j
+@RestController
+public class AddressController {
+    private final UserService userService;
+    private final AddressService addressService;
+    @Autowired
+    public AddressController(UserService userService, AddressService addressService) {
+        this.userService = userService;
+        this.addressService = addressService;
+    }
+
+    // TODO: Finalize URL + Add to security filter
+    @RequestMapping(
+            method = RequestMethod.GET,
+            value = "/api/test"
+    )
+    public ResponseEntity<?> getTEST(Principal principal){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        log.info(userDetails.getUsername());
+        log.info(userDetails.getAuthorities().toString());
+        log.info("------------------------");
+        UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) principal;
+        log.info(authenticationToken.toString());
+        return ResponseEntity.ok("JWT TEST");
+    }
+
+    @RequestMapping(
+            method = RequestMethod.POST,
+            value = "/api/address"
+    )
+    public ResponseEntity<?> postUserAddress(@RequestBody Address address) {
+        log.info(address.toString());
+        String username = extractUsername();
+        // call userService.getUser(String username);
+        User user = userService.getUser(username);
+        addressService.registerAddress(address, user);
+        return ResponseEntity.status(HttpStatus.CREATED).body("user's address posted");
+    }
+
+    public String extractUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        return userDetails.getUsername();
+    }
+}

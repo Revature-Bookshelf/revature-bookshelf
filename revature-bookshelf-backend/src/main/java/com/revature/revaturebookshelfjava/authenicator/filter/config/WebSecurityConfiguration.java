@@ -1,4 +1,4 @@
-package com.revature.revaturebookshelfjava.authenicator.config;
+package com.revature.revaturebookshelfjava.authenicator.filter.config;
 
 import com.revature.revaturebookshelfjava.authenicator.filter.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +39,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/api/users").permitAll()
+                .antMatchers("/api/address").authenticated()
+                .antMatchers("/api/test").authenticated()
                 // TODO: ADD MORE PATHS or anyExchange().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -46,7 +48,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
-//    // TODO: Resolve @Bean conflict ?
+//    // TODO: Resolve @Bean conflict ? SOLUTION: MOVE @Bean to main
 //    @Bean
 //    public PasswordEncoder passwordEncoder(){
 //        return new BCryptPasswordEncoder();

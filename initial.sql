@@ -29,3 +29,29 @@ VALUES ('ROLE_USER');
 
 INSERT INTO user_authority (user_id, authority_id)
 VALUES (1,1);
+
+CREATE TABLE addresses(
+	id int PRIMARY KEY auto_increment,
+	street_name varchar(50) NOT NULL,
+	city varchar(50) NOT NULL,
+	state varchar(50) NOT NULL,
+	postal_code int NOT NULL
+);
+
+CREATE TABLE user_address (
+	user_id int, FOREIGN KEY (user_id) REFERENCES users(id),
+	address_id int, FOREIGN KEY (address_id) REFERENCES addresses(id)
+);
+
+CREATE TABLE address_types (
+	id int PRIMARY KEY auto_increment,
+	type varchar(30) NOT NULL UNIQUE
+);
+
+CREATE TABLE address_address_type (
+	address_id int, FOREIGN KEY (address_id) REFERENCES addresses(id),
+	type_id int, FOREIGN KEY (type_id) REFERENCES address_types(id)
+);
+
+ALTER TABLE user_address
+ADD CONSTRAINT user_address UNIQUE(user_id,address_id)

@@ -24,13 +24,22 @@ public class User {
 //    @CollectionTable(name = "user_roles", foreignKey = @ForeignKey(name = "user_id"))
 //    private List<String> authorities;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_authority",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name ="authority_id")
+            inverseJoinColumns = @JoinColumn(name = "authority_id")
     )
     private List<Authority> authorities;
+
+    // TODO: add fetch = FetchType.EAGER
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "user_address",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "address_id")
+    )
+    private List<Address> addresses;
 
     // Fun Information
     private String firstName;

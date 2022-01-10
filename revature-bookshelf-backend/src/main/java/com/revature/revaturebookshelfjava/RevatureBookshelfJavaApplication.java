@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 @EnableConfigurationProperties
+@EnableJpaRepositories
 public class RevatureBookshelfJavaApplication {
 
     public static void main(String[] args) {

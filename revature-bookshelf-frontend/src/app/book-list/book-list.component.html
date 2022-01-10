@@ -1,0 +1,7 @@
+<select (change)="getBooks()" [(ngModel)]='selectedValue'>
+    <option value="available">available</option>
+    <option value="all" selected>All</option>
+</select>
+<app-book-view *ngFor="let book of books" [value]="book">
+
+</app-book-view>

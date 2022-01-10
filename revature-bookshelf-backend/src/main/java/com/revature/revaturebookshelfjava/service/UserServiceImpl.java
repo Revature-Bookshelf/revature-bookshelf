@@ -6,14 +6,12 @@ import com.revature.revaturebookshelfjava.repository.AuthRepository;
 import com.revature.revaturebookshelfjava.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -41,9 +39,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    // Called Internally, username always exist
     @Override
     public User getUser(String username) {
-        return userRepository.findByEmail(username);
+        return userRepository.findByEmail(username).get();
     }
 
     @Override
@@ -55,7 +54,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         // Checking for existing authorities based
         // TODO: USE STREAM API FOR SUPPORT OF MULTIPLE input AUTHORITY
         Optional<Authority> result = authRepository.findByAuthority(user.getAuthorities().iterator().next().getAuthority());
-        if (result != null) { // Existing Record
+        if (!result.isEmpty()) { // Existing Record
             user.setAuthorities(List.of(result.get()));
         }
         userRepository.save(user);
@@ -65,15 +64,14 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = userRepository.findByEmail(username);
-        if (user == null) throw new UsernameNotFoundException(username);
+        Optional<User> user = userRepository.findByEmail(username);
+        if (user.isEmpty()) throw new UsernameNotFoundException(username);
 
         ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        for (Authority authority : user.getAuthorities()) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
+        for (Authority authority : user.get().getAuthorities()) {
+            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getName()));
         }
-        log.info(user.toString());
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(user.get().getEmail(), user.get().getPassword(), grantedAuthorities);
     }
 
 

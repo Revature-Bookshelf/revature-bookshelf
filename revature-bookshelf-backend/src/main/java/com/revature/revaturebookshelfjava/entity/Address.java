@@ -7,8 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Objects;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -56,5 +54,4 @@ public class Address {
                 && city.equals(address.city)
                 && state.equals(address.state);
     }
-
 }

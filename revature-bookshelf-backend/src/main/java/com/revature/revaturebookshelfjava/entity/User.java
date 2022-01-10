@@ -1,5 +1,6 @@
 package com.revature.revaturebookshelfjava.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,9 +21,6 @@ public class User {
     private int id;
     private String email;
     private String password;
-//    @ElementCollection(fetch = FetchType.EAGER)
-//    @CollectionTable(name = "user_roles", foreignKey = @ForeignKey(name = "user_id"))
-//    private List<String> authorities;
 
     @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(
@@ -41,11 +39,16 @@ public class User {
     )
     private List<Address> addresses;
 
+    @ManyToMany
+    @JoinTable(name = "client_inventory",
+            joinColumns = { @JoinColumn (name = "user_id")},
+            inverseJoinColumns = { @JoinColumn (name = "book_id")})
+    private List<Book> ownedBooks;
+
     // Fun Information
     private String firstName;
     private String middleName;
     private String lastName;
-
 
     @Override
     public String toString() {

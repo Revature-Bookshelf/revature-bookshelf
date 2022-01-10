@@ -69,11 +69,12 @@ public class AddressController {
         String username = extractUsername();
         User user = userService.getUser(username);
         /* Operate on User for editing addresses*/
-        try {
-
-        } catch () {
-
-        }
+//        try {
+//
+//        } catch () {
+//
+//        }
+        return ResponseEntity.ok("Address edited");
     }
     public String extractUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

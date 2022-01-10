@@ -1,8 +1,10 @@
 package com.revature.revaturebookshelfjava.service;
 
 import com.revature.revaturebookshelfjava.entity.Authority;
+import com.revature.revaturebookshelfjava.entity.Cart;
 import com.revature.revaturebookshelfjava.entity.User;
 import com.revature.revaturebookshelfjava.repository.AuthRepository;
+import com.revature.revaturebookshelfjava.repository.CartRepository;
 import com.revature.revaturebookshelfjava.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private final UserRepository userRepository;
     @Autowired
     private AuthRepository authRepository;
+    @Autowired
+    private CartRepository cartRepository;
     //    @Autowired
     private final PasswordEncoder passwordEncoder;
 
@@ -46,7 +50,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public void register(User user) {
+    public void register(User user, Cart cart) {
+
         // Input User with plain-text password
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
@@ -57,7 +62,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if (!result.isEmpty()) { // Existing Record
             user.setAuthorities(List.of(result.get()));
         }
-        userRepository.save(user);
+        user.setCart(cart);
+        //Cart cart = cartRepository.save(newCart);
+        User newUser =userRepository.save(user);
+
+        // Creating New Cart for a New User
+
     }
 
     // From UserDetailsService
@@ -69,7 +79,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         for (Authority authority : user.get().getAuthorities()) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getName()));
+            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
         }
         return new org.springframework.security.core.userdetails.User(user.get().getEmail(), user.get().getPassword(), grantedAuthorities);
     }

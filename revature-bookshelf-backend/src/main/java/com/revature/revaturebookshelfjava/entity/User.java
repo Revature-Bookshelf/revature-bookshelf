@@ -17,7 +17,7 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String email;
     private String password;
@@ -41,10 +41,13 @@ public class User {
 
     @ManyToMany
     @JoinTable(name = "client_inventory",
-            joinColumns = { @JoinColumn (name = "user_id")},
-            inverseJoinColumns = { @JoinColumn (name = "book_id")})
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "book_id")})
     private List<Book> ownedBooks;
 
+    @OneToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
     // Fun Information
     private String firstName;
     private String middleName;

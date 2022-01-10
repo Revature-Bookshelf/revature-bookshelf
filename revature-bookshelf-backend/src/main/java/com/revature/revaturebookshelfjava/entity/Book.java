@@ -29,16 +29,20 @@ public class Book {
     @Column(unique = true)
     private String isbn;
     private String author;
+
     @ManyToMany
     @JoinTable(name = "genre_join",
-    joinColumns = { @JoinColumn (name = "book_id")},
-    inverseJoinColumns = { @JoinColumn (name = "genre_id")})
+            joinColumns = {@JoinColumn(name = "book_id")},
+            inverseJoinColumns = {@JoinColumn(name = "genre_id")}
+    )
     private List<Genre> genres;
     @Column(name = "imgpath")
     private String imgPath;
+
     @ManyToMany(mappedBy = "ownedBooks")
     @JsonIgnore
     private List<User> owners;
+
     @OneToOne(mappedBy = "book")
     private StoreProduct priceAndQuantity;
 

@@ -40,6 +40,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/api/users").permitAll()
                 .antMatchers("/api/address").authenticated()
+                .antMatchers("/api/cart").authenticated()
                 .antMatchers("/api/test").authenticated()
                 // TODO: ADD MORE PATHS or anyExchange().authenticated()
                 .and()

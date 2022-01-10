@@ -4,41 +4,61 @@ import com.revature.revaturebookshelfjava.entity.Book;
 import com.revature.revaturebookshelfjava.entity.Cart;
 import com.revature.revaturebookshelfjava.entity.User;
 import com.revature.revaturebookshelfjava.exception.CartItemNotExistException;
+import com.revature.revaturebookshelfjava.repository.BookRepository;
 import com.revature.revaturebookshelfjava.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CartServiceImpl implements CartService {
 
     @Autowired
     private CartRepository cartRepository;
+    @Autowired
+    private BookRepository bookRepository;
 
     @Override
-    public Cart addItem(Book bookId) {
-        Cart cart = addItem(bookId);
+    public Cart addItem(int bookId, User user) {
+        // These Optionals should always be true
+        Optional<Cart> cartOptional = getCartByUser(user);
+        Cart cart = cartOptional.get();
+        Optional<Book> book = bookRepository.findById(bookId);
+        cart.getBooks().add(book.get());
         return cartRepository.save(cart);
     }
 
     @Override
-    public Cart deleteItem(int bookId) throws CartItemNotExistException {
-        Cart cart = deleteItem(bookId);
-        if(!cartRepository.existsById(bookId))
-            throw new CartItemNotExistException("book id is invalid :" + bookId);
-        cartRepository.deleteById(bookId);
-        return cart;
-    }
-
-    @Override
-    public Cart updateItem(Book bookId) {
-        Cart cart = updateItem(bookId);
+    public Cart deleteItem(int bookId, User user) throws CartItemNotExistException {
+        // These Optionals should always be true
+        Optional<Cart> cartOptional = getCartByUser(user);
+        Cart cart = cartOptional.get();
+        Optional<Book> book = bookRepository.findById(bookId);
+        cart.getBooks().remove(book.get());
         return cartRepository.save(cart);
+
     }
 
+//    @Override
+//    public Cart updateItem(Book bookId) {
+//        Cart cart = updateItem(bookId);
+//        return cartRepository.save(cart);
+//    }
+
     @Override
-    public List<Book> getAllItems(User userId) {
-        return null;
+    public List<Book> getAllItems(User user) {
+        Optional<Cart> cartOptional = getCartByUser(user);
+        return cartOptional.get().getBooks();
+    }
+
+    public Optional<Cart> getCartByUser(User user) {
+        Optional<Cart> cartOptional = cartRepository.findByUserId(user.getId());
+        if (cartOptional.isEmpty()) {
+            throw new NotFoundException("SHOULD NEVER BE THROWN");
+        }
+        return cartOptional;
     }
 }

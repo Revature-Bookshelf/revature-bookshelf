@@ -20,7 +20,15 @@ import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: '', pathMatch: "full", redirectTo: "index.html"},
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'user-profile', component: UserProfileComponent },
+  { path: 'edit-profile', component: EditProfileComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'cart-view', component: CartViewComponent },
+  { path: 'cart-access', component: CartAccessComponent },
+  { path: 'book-view', component: BookViewComponent },
+  { path: 'book-list', component: BookListComponent }
 ];
 
 @NgModule({

@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BookListComponent } from './book-list/book-list.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: 'books', component: BookListComponent },
-  { path: 'user/profile', component: UserProfileComponent }
+  { path: 'user-profile/:id', component: UserProfileComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({ 

@@ -1,13 +1,19 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject,Observable, throwError } from 'rxjs';
 import jwt_decode from 'jwt-decode'; 
+import { User } from './_models/user';
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class UserService {
+    endpoint: string = 'http://localhost:4000/api';
+    headers = new HttpHeaders().set('Content-Type', 'application/json');
+    currentUser = {};
+  
 
     userStream: BehaviorSubject<any> = new BehaviorSubject({})
     userName: string | null = null
@@ -77,4 +83,30 @@ export class UserService {
       }
 
     constructor(private httpClient: HttpClient) {}
+
+    getUserProfile(id : any): Observable<any> {
+        let api = `${this.endpoint}/user-profile/${id}`;
+        return this.httpClient.get(api, { headers: this.headers }).pipe(
+          map((response: any) => {
+            const user = response as User;
+            return user || {}
+          }),
+          catchError(this.handleError)
+        )
+      }
+
+    
+
+       // Error 
+  handleError(error: HttpErrorResponse) {
+    let msg = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      msg = error.error.message;
+    } else {
+      // server-side error
+      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(msg);
+  }
 }

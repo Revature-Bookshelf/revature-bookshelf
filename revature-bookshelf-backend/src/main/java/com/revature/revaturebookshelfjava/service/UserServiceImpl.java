@@ -1,5 +1,6 @@
 package com.revature.revaturebookshelfjava.service;
 
+import com.revature.revaturebookshelfjava.entity.Authority;
 import com.revature.revaturebookshelfjava.entity.User;
 import com.revature.revaturebookshelfjava.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class UserServiceImpl implements UserService, UserDetailsService{
         if(user.isEmpty())throw new UsernameNotFoundException(username);
 
         ArrayList<GrantedAuthority> grantedAuthorities=new ArrayList<>();
-        for(String authority:user.get().getAuthorities()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(authority));
+        for(Authority authority:user.get().getAuthorities()){
+            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getName()));
         }
         return new org.springframework.security.core.userdetails.User(user.get().getEmail(),user.get().getPassword(), grantedAuthorities);
     }

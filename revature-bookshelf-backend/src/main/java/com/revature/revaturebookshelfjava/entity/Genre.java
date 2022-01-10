@@ -18,7 +18,6 @@ public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private int id;
     @Column(name = "genre", unique = true)
     @NotNull

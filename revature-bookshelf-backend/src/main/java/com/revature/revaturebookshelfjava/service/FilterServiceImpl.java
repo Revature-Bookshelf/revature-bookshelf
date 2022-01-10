@@ -3,11 +3,13 @@ package com.revature.revaturebookshelfjava.service;
 import com.revature.revaturebookshelfjava.entity.Filter;
 import com.revature.revaturebookshelfjava.entity.Genre;
 import com.revature.revaturebookshelfjava.entity.StoreProduct;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class FilterServiceImpl implements FilterService{
 
     @Override

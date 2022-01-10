@@ -36,10 +36,8 @@ public class Book {
     private List<Genre> genres;
     @Column(name = "imgpath")
     private String imgPath;
-    @ManyToMany
-    @JoinTable(name = "client_inventory",
-    joinColumns = { @JoinColumn (name = "book_id")},
-    inverseJoinColumns = { @JoinColumn (name = "user_id")})
+    @ManyToMany(mappedBy = "ownedBooks")
+    @JsonIgnore
     private List<User> owners;
     @OneToOne(mappedBy = "book")
     private StoreProduct priceAndQuantity;

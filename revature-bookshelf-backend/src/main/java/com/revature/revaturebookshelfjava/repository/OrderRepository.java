@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface OrderRepository extends JpaRepository<Order,Integer> {
 
-    @Query("from Order o join o.cart c where c.user_id=:userId")
+    @Query("from Order o join o.cart c join c.user u where u.id=:userId")
     List<Order> findByCartUserId(int userId);
 
     @Query("from Order o join o.cart c join c.user u where u.username=:username")

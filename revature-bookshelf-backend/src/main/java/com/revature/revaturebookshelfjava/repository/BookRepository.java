@@ -16,7 +16,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     @Query("from StoreProduct")
     List<StoreProduct> findAllAvailable();
 
-    @Query("from Book b where join b.genres g where g.name=:genre_name")
+    @Query("from Book b join b.genres g where g.name=:genre_name")
     List<Book> findSelectGenre(String genre_name);
 
     @Query("from Genre")

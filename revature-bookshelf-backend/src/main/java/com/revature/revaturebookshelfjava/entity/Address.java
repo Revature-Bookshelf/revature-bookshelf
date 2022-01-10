@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,5 +23,5 @@ public class Address {
     private String postalCode;
     private String type;
     @ManyToMany(mappedBy = "addresses")
-    private User user;
+    private List<User> users;
 }

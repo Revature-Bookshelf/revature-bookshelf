@@ -24,5 +24,5 @@ public class Authority {
     private String name;
     @ManyToMany(mappedBy = "authorities")
     @JsonIgnore
-    private List<User> user;
+    private List<User> users;
 }

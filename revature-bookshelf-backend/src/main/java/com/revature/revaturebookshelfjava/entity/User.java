@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.util.List;
@@ -23,6 +22,7 @@ public class User {
     private String email;
     @Column(unique = true)
     private String username;
+    @JsonIgnore
     private String password;
     private String firstName;
     private String middleName;
@@ -31,15 +31,19 @@ public class User {
     @JoinTable(name = "auth_join",
     joinColumns = { @JoinColumn(name = "user_id")},
     inverseJoinColumns = { @JoinColumn(name = "auth_id")})
-    private List<String> authorities;
+    private List<Authority> authorities;
     @OneToOne(mappedBy = "user")
-    @JsonIgnore
     private Cart cart;
-    @ManyToMany()
+    @ManyToMany
     @JoinTable(name = "address_join",
     joinColumns = { @JoinColumn(name = "user_id")},
     inverseJoinColumns = { @JoinColumn(name = "address_id")})
     private List<Address> addresses;
+    @ManyToMany
+    @JoinTable(name = "client_inventory",
+            joinColumns = { @JoinColumn (name = "user_id")},
+            inverseJoinColumns = { @JoinColumn (name = "book_id")})
+    private List<Book> ownedBooks;
 
     @Override
     public String toString() {

@@ -1,24 +1,29 @@
 package com.revature.revaturebookshelfjava.controller;
 
-
+import com.revature.revaturebookshelfjava.controller.payload.HttpResponseBody;
 import com.revature.revaturebookshelfjava.entity.User;
-import com.revature.revaturebookshelfjava.repository.UserRepository;
+<<<<<<< HEAD
+import com.revature.revaturebookshelfjava.service.UserService;
+=======
+>>>>>>> main
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.security.core.Authentication;
-
-import java.util.Collection;
-import java.util.Optional;
-
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
 
+<<<<<<< HEAD
+    private final UserService userService;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+=======
     @Autowired
     private final UserRepository userRepository;
 
@@ -39,20 +44,26 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.ok(optionalUser.get());
+>>>>>>> main
     }
 
+    // TODO: Finalize URL
+    // POST /api/users
+    @RequestMapping(
+            method = RequestMethod.POST,
+            value = "/api/users"
+    )
+    public ResponseEntity<?> doRegistration(@RequestBody User user) {
 
+        userService.register(user);
 
+        HttpResponseBody responseBody = new HttpResponseBody("user registered");
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
 
-    @PostMapping(value="/api/edit-profile")
-    public ResponseEntity<?> post(@RequestBody User user){
-        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails=(UserDetails) authentication.getPrincipal();
-        String email = userDetails.getUsername();
-        userRepository.findByEmail(email);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
+<<<<<<< HEAD
+=======
     @PutMapping(value="/api/edit-profile/{userId}",
             consumes ="application/json")
     public ResponseEntity<?> put(@PathVariable String userId, @RequestBody User user){
@@ -65,5 +76,6 @@ public class UserController {
         userRepository.deleteById(userId);
         return ResponseEntity.ok().build();
     }
+>>>>>>> main
 
 }

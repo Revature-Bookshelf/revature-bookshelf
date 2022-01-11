@@ -18,7 +18,8 @@ public class AddressType {
     private int id;
     private String type;
 
-    @ManyToMany(mappedBy = "types")
-    private List<Address> addresses;
+    // Commented out because of recursive nature
+//    @ManyToMany(mappedBy = "types")
+//    private List<Address> addresses;
 
 }

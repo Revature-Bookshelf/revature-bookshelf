@@ -9,6 +9,7 @@ import com.revature.revaturebookshelfjava.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -66,12 +67,24 @@ public class AddressServiceImpl implements AddressService {
                 }
                 newAddress.setTypes(newTypes);
                 //List<Address> addyList = new ArrayList<>(user.getAddresses());
+                Optional<List<Address>> ownedAddresses = addressRepository.findAddressesByUser(user);//
                 List<Address> addyList = new ArrayList<>();
                 addyList.add(newAddress);
+                addyList.addAll(ownedAddresses.get());//
                 user.setAddresses(addyList);
                 //addressRepository.save(newAddress);
                 userRepository.save(user);
             }
         }
+    }
+
+    @Override
+    public List<Address> getAddressByUser(User user) {
+        Optional<List<Address>> optionalAddressList = addressRepository.findAddressesByUser(user);
+        if (optionalAddressList.isEmpty()){
+            // return empty list
+            return new ArrayList<Address>();
+        }
+        return  optionalAddressList.get();
     }
 }

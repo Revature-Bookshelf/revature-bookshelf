@@ -1,80 +1,56 @@
-
-
-<div class="container">
-    <div class="main-body">
-        
-          <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex flex-column align-items-center text-center">
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="166" height="166" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                          </svg>
-                      </span>
-                    
-                    <div class="thirtypxtop">
-                      <h4>Username</h4>
-                      <p class="text-secondary mb-1">Status Here</p>
-                      <p class="text-muted font-size-sm">optional Location</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+ <div class=" body container rounded bg-white mt-5 mb-5">
+  <div class="row">
+      <div class="col-md-3 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <!-- <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+             -->
+             <svg xmlns="http://www.w3.org/2000/svg" width="166" height="166" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>
+            <div>
+              <!-- <p>Name:  {{this.currentUser.name}}</p>
+             <p>Email:  {{this.currentUser.email}}</p> -->
             </div>
-            <div class="col-md-8">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Full Name</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      Required
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Email</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      required@mail.com
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Phone</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      (123) opt-ional
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Address</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      required for purchases but hidden from view. 
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <a class="btn btn-color " target="__blank" href="">Edit</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              
-
-            </div>
+           
           </div>
+      </div>
+      <div class="col-md-5 border-right">
+          <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h1 class="text-right">Profile Settings</h1>
+              </div>
+              <form>
+                <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label class="labels">Name</label>
+                    <input type="text" class="form-control" placeholder="first name" value="">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels">Last Name</label>
+                    <input type="text" class="form-control" value="" placeholder="surname">
+                  </div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
+                  
+                  <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="enter email " value=""></div>
+                  <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
+                  <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                  <div class="col-md-12"><label class="labels">City</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
+                  <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
+                  <div class="col-md-12"><label class="labels">Postal Code</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+              </div>
+              
+              <div class="mt-5 text-center">
+                <button class="btn btn-primary profile-button" type="button">Save Profile</button>
+              </div>
+              </form>          
+          </div>
+      </div>
+  </div>
+</div>
 
-        </div>
-    </div>

@@ -10,11 +10,13 @@ import { UserService } from '../user.service';
 })
 export class SignupComponent implements OnInit {
   registerForm: FormGroup = this.fb.group({
-    email: ['',[Validators.required, Validators.email]],
-    password: ['', Validators.required]
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
+    firstName: [''],
+    lastName: ['']
 
   });
-  
+
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -23,7 +25,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.userStream.subscribe({
-      next:(e:any) => {
+      next: (e: any) => {
         if (e.action === "REGISTER_SUCCESS") {
           this.router.navigate(["/login-form"])
         }
@@ -35,7 +37,7 @@ export class SignupComponent implements OnInit {
     if (this.registerForm.valid) {
       let formData = this.registerForm.value;
       this.userService.doRegister(formData)
-      
+
     }
   }
 }

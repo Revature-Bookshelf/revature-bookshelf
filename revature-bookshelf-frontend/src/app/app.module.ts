@@ -17,6 +17,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { AddressCardComponent } from './address-card/address-card.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,7 +42,8 @@ const routes: Routes = [
     BookViewComponent,
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    AddressCardComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ import { UserService } from '../user.service';
 
 export class UserProfileComponent implements OnInit {
   currentUser: Object = {};
-
+  addresses: any = {}
   constructor(
     public userService: UserService,
     private actRoute: ActivatedRoute
@@ -26,7 +26,39 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.actRoute.snapshot.paramMap.get('token'));
-
+    // toBeLoaded From DB
+    this.addresses = [
+      {
+          "id": 2,
+          "streetName": "3301 4th Ave S",
+          "city": "Seattle",
+          "state": "Washington",
+          "postalCode": 98134,
+          "types": [
+              {
+                  "id": 2,
+                  "type": "BILLING"
+              }
+          ]
+      },
+      {
+          "id": 1,
+          "streetName": "6305 Martin Luther King Jr Way",
+          "city": "Seattle",
+          "state": "Washington",
+          "postalCode": 98118,
+          "types": [
+              {
+                  "id": 2,
+                  "type": "BILLING"
+              },
+              {
+                  "id": 1,
+                  "type": "SHIPPING"
+              }
+          ]
+      }
+  ]
     this.actRoute.paramMap.subscribe(paramMap => {
        console.log(paramMap.get('token'));
     });

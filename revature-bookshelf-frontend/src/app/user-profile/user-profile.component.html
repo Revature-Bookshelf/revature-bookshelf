@@ -44,7 +44,7 @@
                   <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
                   <div class="col-md-12"><label class="labels">Postal Code</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
               </div>
-              
+              <app-address-card *ngFor="let address of addresses" [addressInput]="address"></app-address-card>
               <div class="mt-5 text-center">
                 <button class="btn btn-primary profile-button" type="button">Save Profile</button>
               </div>

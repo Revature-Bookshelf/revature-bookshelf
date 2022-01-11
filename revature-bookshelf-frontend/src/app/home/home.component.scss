@@ -83,11 +83,10 @@ cite img {
 }
 
 // Social Section
-
 .social-details {
   font-size: 140%;
   color: $primary-drkgray;
-  text-shadow: 1px 1px 1px #000;
+  text-shadow: 1px 1px 1px $secondary-blue;
   transition: transform 0.3s ease-out;
 }
 

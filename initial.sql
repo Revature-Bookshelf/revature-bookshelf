@@ -51,14 +51,14 @@ CREATE TABLE address_types (
 
 CREATE TABLE address_address_type (
 	address_id int, FOREIGN KEY (address_id) REFERENCES addresses(id),
-	type_id int, FOREIGN KEY (type_id) REFERENCES address_types(id)
+	address_type_id int, FOREIGN KEY (address_type_id) REFERENCES address_types(id)
 );
 
 ALTER TABLE user_address
-ADD CONSTRAINT user_address UNIQUE(user_id,address_id)
+ADD CONSTRAINT user_address UNIQUE(user_id,address_id);
 
 ALTER TABLE addresses
-ADD CONSTRAINT addresses UNIQUE (street_name, city, state, postal_code)
+ADD CONSTRAINT addresses UNIQUE (street_name, city, state, postal_code);
 
 INSERT INTO address_types (type)
 VALUES ('SHIPPING'),('BILLING');
@@ -90,7 +90,7 @@ CREATE TABLE store_inventory (
 );
 
 CREATE TABLE carts (
-	id int PRIMARY KEY
+	id int PRIMARY KEY auto_increment
 );
 
 CREATE TABLE cart_join (

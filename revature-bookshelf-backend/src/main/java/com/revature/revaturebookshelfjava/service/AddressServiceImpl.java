@@ -65,7 +65,8 @@ public class AddressServiceImpl implements AddressService {
                     newTypes.add(optionAddressType.get());
                 }
                 newAddress.setTypes(newTypes);
-                List<Address> addyList = new ArrayList<>(user.getAddresses());
+                //List<Address> addyList = new ArrayList<>(user.getAddresses());
+                List<Address> addyList = new ArrayList<>();
                 addyList.add(newAddress);
                 user.setAddresses(addyList);
                 //addressRepository.save(newAddress);

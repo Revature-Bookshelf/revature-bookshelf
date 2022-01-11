@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface CartService {
 
+    Cart createCart(Cart cart);
 
     Cart addItem(int bookId, User user);
 

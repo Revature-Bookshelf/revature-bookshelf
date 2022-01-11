@@ -21,4 +21,6 @@ spring:
 
   config:
     activate:
-      on-profile: production
+      #profile depends on environment
+      on-profile: default
+      #on-profile: production

@@ -11,6 +11,7 @@ import { CartViewComponent } from './cart-view/cart-view.component';
 import { CartAccessComponent } from './cart-access/cart-access.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 // const routes: Routes = [{ path: 'books', component: BookListComponent }];
 
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'cart-view', component: CartViewComponent },
   { path: 'cart-access', component: CartAccessComponent },
   { path: 'book-view', component: BookViewComponent },
-  { path: 'book-list', component: BookListComponent }
+  { path: 'book-list', component: BookListComponent },
+  { path: '**', component: PagenotfoundComponent}
 ];
 
 @NgModule({

@@ -11,26 +11,13 @@ import { SearchComponent } from './search/search.component';
 import { CartViewComponent } from './cart-view/cart-view.component';
 import { CartAccessComponent } from './cart-access/cart-access.component';
 import { JwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
-import { AuthGuard } from './auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule, Routes } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
 
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'user-profile', component: UserProfileComponent },
-  { path: 'edit-profile', component: EditProfileComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'cart-view', component: CartViewComponent },
-  { path: 'cart-access', component: CartAccessComponent },
-  { path: 'book-view', component: BookViewComponent },
-  { path: 'book-list', component: BookListComponent }
-];
 
 @NgModule({
   declarations: [
@@ -50,8 +37,8 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
     AppRoutingModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule
   ],

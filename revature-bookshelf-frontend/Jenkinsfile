@@ -39,7 +39,7 @@ pipeline {
               steps {
                   dir("revature-bookshelf-frontend"){
                     withAWS(region:'us-west-1',credentials:'aws-s3-upload') {
-                       s3Upload(file:'dist/revature-bookshelf-frontend', bucket:'revature-bookshelf-bucket')
+                       s3Upload(file:'dist/revature-bookshelf-frontend',bucket:'revature-bookshelf-bucket')
                     }
                   }
               }

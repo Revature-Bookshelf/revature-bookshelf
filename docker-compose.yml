@@ -1,6 +1,14 @@
 version: "3.8"
 
 services:
+  front-end:
+    build: revature-bookshelf-frontend
+    ports:
+      - 5010:80
+  back-end:
+    build: revature-bookshelf-backend
+    ports:
+      - 5020:8080
 
   sqldb:
     image: mysql
@@ -17,7 +25,7 @@ services:
     restart: always
     ports:
       - 5050:8080
-      
+
 networks:
   default:
-    name: mysqldb_network
+    name: bookshelf_network

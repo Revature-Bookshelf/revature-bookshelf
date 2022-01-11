@@ -11,10 +11,11 @@ export class CartService {
   constructor(private httpClient: HttpClient) { }
 
   cart: any = {}
-  items: books[] = [];
+  items: any[] = [];
+  cartCount = Object.keys(this.cart).length
 
   addToCart(bookId: number) {
-    return this.httpClient.post(`${this.apiUrl}/add/{bookId}`);
+    return this.httpClient.post(`${this.apiUrl}/add/{bookId}`, []);
   }
 
   deleteItems(bookId: number) {

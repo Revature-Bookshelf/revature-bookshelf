@@ -114,8 +114,8 @@ VALUES ('Green Eggs and Ham',65,'1960-08-12',0545002850,'Dr. Suess','../assets/i
 ('Make Magic! Do Good!',112,'2012-11-13',763657468,'Dallas Clayton','../assets/images/makemagic'),
 ('The Drama of the Gifted Child: The Search for the True Self',136,'1997-01-01',0465016901,'Alice Miller','../assets/images/giftedchild'),
 ('The Great Gatsby',152,'1925-04-10', 0743273567,'F. Scott Fitzgerald','../assets/images/greatgatsby'),
-('Percy Jackson and the Lightning Thief',377,'2006-04-01', 0786838655,'Rick Riordan','../assets/images/'),
-('Quantum Physics for Dummies',336,'2009-02-03', 1118460820,'Steven Holzner','../assets/images/');
+('Percy Jackson and the Lightning Thief',377,'2006-04-01', 0786838655,'Rick Riordan','../assets/images/lightning'),
+('Quantum Physics for Dummies',336,'2009-02-03', 1118460820,'Steven Holzner','../assets/images/quantum');
 
 
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
@@ -130,33 +130,33 @@ INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath)
 VALUES ('Tao Te Ching (Illustrated Feng/English/Lippe Translation)','Lao Tsu',0307949303,'2011-11-01',184,'../assets/images/taoteching');
 
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
-VALUES ('Interworld','Michael Reaves',7523424,2007-26-06,304,'../assets/images/');
+VALUES ('Interworld','Michael Reaves',0007523424,2007-26-06,304,'../assets/images/interworld');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
-VALUES ('Where the Sidewalk Ends','Shel Silverstein',60256672,1905-27-05,309,'../assets/images/');
+VALUES ('Where the Sidewalk Ends','Shel Silverstein',0060256672,1905-27-05,309,'../assets/images/sidewalk');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
-VALUES ('The Future Evolution of Man: The Divine Life Upon Earth','Sri Aurobindo',940985551,2003-11-04,168,'../assets/images/futureevolution');
+VALUES ('The Future Evolution of Man: The Divine Life Upon Earth','Sri Aurobindo',0940985551,2003-11-04,168,'../assets/images/futureevolution');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
-VALUES ('Total Freedom: The Essential Krishnamurti','Jiddu Krishnamurti',60648805,1996-30-08,384,'../assets/images/totalfreedom');
+VALUES ('Total Freedom: The Essential Krishnamurti','Jiddu Krishnamurti',0060648805,1996-30-08,384,'../assets/images/totalfreedom');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
 VALUES ('In Order to Live: A North Korean Girl\'s Journey to Freedom','Yeonmi Park','014310974X',2016-27-09,288,'../assets/images/inordertolive');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
-VALUES ('The Seven Military Classics Of Ancient China','Ralph D. Sawyer',465003044,2007-06-11,592,'../assets/images/sevenmilitaryclassics');
+VALUES ('The Seven Military Classics Of Ancient China','Ralph D. Sawyer',0465003044,2007-06-11,592,'../assets/images/sevenmilitaryclassics');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
-VALUES ('Man\'s Search for Meaning',' Viktor E. Frankl',807014273,2006-01-06,192,'../assets/images/manssearch');
+VALUES ('Man\'s Search for Meaning',' Viktor E. Frankl',0807014273,2006-01-06,192,'../assets/images/manssearch');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
 VALUES ('The Leader\'s Bookshelf','James Stavridis',1682471799,2017-15-03,288,'../assets/images/leadersbookshelf');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
 VALUES ('The Inheritance Cycle 4-Book Trade Paperback Boxed Set: Eragon; Eldest; Brisingr; Inheritance','Christopher Paolini',449813223,2012-23-10,880,'../assets/images/inheritance');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
-VALUES ('Chronicles of Tao: The Secret Life of a Taoist Master','Deng Ming-Dao',62502190,1993-08-10,476,'../assets/images/chroniclesoftao');
+VALUES ('Chronicles of Tao: The Secret Life of a Taoist Master','Deng Ming-Dao',0062502190,1993-08-10,476,'../assets/images/chroniclesoftao');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
-VALUES ('Dune','Frank Herbert','B00B7NPRY8',1965-01-08,890,'../assets/images/dune');
+VALUES ('Dune','Frank Herbert','059309932X',1965-01-08,890,'../assets/images/dune');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
-VALUES ('Design of Everyday Things: Revised','Don Norman',9780465050659,2013-05-11,368,'../assets/images/designofeverydaythings');
+VALUES ('Design of Everyday Things: Revised','Don Norman',0465050654,2013-05-11,368,'../assets/images/designofeverydaythings');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
-VALUES ('Astrophysics for People in a Hurry','Neil deGrasse Tyson',9780393609394,2017-02-05,222,'../assets/images/astrophysicsinahurry');
+VALUES ('Astrophysics for People in a Hurry','Neil deGrasse Tyson',0393609391,2017-02-05,222,'../assets/images/astrophysicsinahurry');
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
-VALUES ('Tao of Jeet Kune Do: Expanded Edition','Bruce Lee',897502027,2011-01-11,250,'../assets/images/taojeetkunedo');
+VALUES ('Tao of Jeet Kune Do: Expanded Edition','Bruce Lee',0897502027,2011-01-11,250,'../assets/images/taojeetkunedo');
 
 
 

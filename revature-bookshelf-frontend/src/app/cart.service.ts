@@ -1,27 +1,28 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
+  apiUrl = "http://localhost:8080/api/cart";
+
+  constructor(private httpClient: HttpClient) { }
+
   cart: any = {}
-  cartCount = Object.keys(this.cart).length
+  items: books[] = [];
 
-  /*items: Book[] = [];
-
-  addToCart(book: Book) {
-    this.items.push(book);
+  addToCart(bookId: number) {
+    return this.httpClient.post(`${this.apiUrl}/add/{bookId}`);
   }
 
-  getItems() {
-    return this.items;
+  deleteItems(bookId: number) {
+    return this.httpClient.delete(`${this.apiUrl}/delete/{bookId}`);
   }
 
   clearCart() {
     this.items = [];
     return this.items;
   }
-*/
-  constructor() { }
 }

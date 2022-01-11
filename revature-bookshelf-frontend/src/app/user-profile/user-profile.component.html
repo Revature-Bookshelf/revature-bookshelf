@@ -18,10 +18,10 @@
 
         <!-- //currentUser here -->
           <div class="p-3 py-5" *ngIf="currentUser">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h1 class="text-right">Profile Settings</h1>
+              <div class="profile">
+                  <h1 >Profile Settings</h1>
               </div>
-              <form [formGroup]="profileForm">
+              <form  [formGroup]="profileForm">
                 <div class="row mt-2">
                   <div class="col-md-6">
                     <label class="labels col-md-3"for="firstName">Name</label>
@@ -38,15 +38,16 @@
                   <div class="col-md-6">
                     <label class="labels col-md-6" for="email">Email</label>  
                     <input id="email" type="text" formControlName="email" placeholder="{{this.currentUser.email}}">
-                  </div> 
-              </div>
-
-              <app-address-card *ngFor="let address of addresses" [addressInput]="address"></app-address-card>
+                  </div>  
+              </div>              
                 
               <div class="mt-5 text-center">
                 <button class="btn btn-primary profile-button"  type="submit" (click)="updateProfile()" [disabled]="!profileForm.valid">Save Profile</button>   
               </div>
-              </form>          
+
+              <app-address-card *ngFor="let address of addresses" [addressInput]="address"></app-address-card>
+              </form>            
+             
           </div>
       </div>
   </div>

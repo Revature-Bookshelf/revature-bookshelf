@@ -24,6 +24,7 @@ export class UserProfileComponent implements OnInit {
   email: string | null = null
   // currentUser: Object = {};
     currentUser: any = {}
+    addresses: any = {}
 
   constructor(
     public userService: UserService,
@@ -49,7 +50,41 @@ export class UserProfileComponent implements OnInit {
     this.userService
           .getUser()
           .subscribe(user => this.currentUser = user);
- 
-      }      
+
+    // HARD ENCODED ADDRESSES
+    this.addresses = [
+      {
+          "id": 2,
+          "streetName": "3301 4th Ave S",
+          "city": "Seattle",
+          "state": "Washington",
+          "postalCode": 98134,
+          "types": [
+              {
+                  "id": 2,
+                  "type": "BILLING"
+              }
+          ]
+      },
+      {
+          "id": 1,
+          "streetName": "6305 Martin Luther King Jr Way",
+          "city": "Seattle",
+          "state": "Washington",
+          "postalCode": 98118,
+          "types": [
+              {
+                  "id": 2,
+                  "type": "BILLING"
+              },
+              {
+                  "id": 1,
+                  "type": "SHIPPING"
+              }
+          ]
+      }
+    ]
+  }      
+
 
 }

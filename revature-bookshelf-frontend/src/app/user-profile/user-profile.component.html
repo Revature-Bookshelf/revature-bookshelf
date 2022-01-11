@@ -40,6 +40,9 @@
                     <input id="email" type="text" formControlName="email" placeholder="{{this.currentUser.email}}">
                   </div> 
               </div>
+
+              <app-address-card *ngFor="let address of addresses" [addressInput]="address"></app-address-card>
+                
               <div class="mt-5 text-center">
                 <button class="btn btn-primary profile-button"  type="submit" (click)="updateProfile()" [disabled]="!profileForm.valid">Save Profile</button>   
               </div>

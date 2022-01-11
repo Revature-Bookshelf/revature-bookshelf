@@ -49,7 +49,7 @@ public class CartController {
         String username = extractUsername();
         User user = userService.getUser(username);
         cartService.addItem(bookId, user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(bookId);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Book item #" + bookId + " successfully added");
     }
 
     @DeleteMapping("/delete/{bookId}")
@@ -59,11 +59,10 @@ public class CartController {
 
         try {
             cartService.deleteItem(bookId, user);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok().body("Book item #" + bookId + " successfully deleted");
         } catch (CartItemNotExistException e) {
             return ResponseEntity.badRequest().body("CartItemNotExistException");
         }
-
     }
 
     /*

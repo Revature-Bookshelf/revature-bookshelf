@@ -1,5 +1,6 @@
 package com.revature.revaturebookshelfjava.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,8 +30,9 @@ public class Address {
             inverseJoinColumns = @JoinColumn(name ="address_type_id")
     )
     private List<AddressType> types;
-
+    //Commented out because of recursive nature
     @ManyToMany(mappedBy = "addresses")
+    @JsonIgnore
     private List<User> user;
 
     @Override

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,4 +23,5 @@ public class StoreProduct {
     private Book book;
     private int quantity;
     private double price;
+
 }

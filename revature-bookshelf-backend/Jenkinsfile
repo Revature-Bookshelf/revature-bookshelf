@@ -16,7 +16,7 @@ pipeline {
         stage('Test') {
             steps {
                 dir('revature-bookshelf-backend'){
-                    sh './mvnw test'
+                    sh './mvnw test -D spring.profiles.active=test'
                 }
             }
         }

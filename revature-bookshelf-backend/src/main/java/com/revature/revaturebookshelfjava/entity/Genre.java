@@ -19,7 +19,7 @@ public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "genre", unique = true)
+    @Column(unique = true)
     @NotNull
     private String name;
     @ManyToMany(mappedBy = "genres")

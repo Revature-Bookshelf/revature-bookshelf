@@ -51,14 +51,14 @@ CREATE TABLE address_types (
 
 CREATE TABLE address_address_type (
 	address_id int, FOREIGN KEY (address_id) REFERENCES addresses(id),
-	type_id int, FOREIGN KEY (type_id) REFERENCES address_types(id)
+	address_type_id int, FOREIGN KEY (address_type_id) REFERENCES address_types(id)
 );
 
 ALTER TABLE user_address
-ADD CONSTRAINT user_address UNIQUE(user_id,address_id)
+ADD CONSTRAINT user_address UNIQUE(user_id,address_id);
 
 ALTER TABLE addresses
-ADD CONSTRAINT addresses UNIQUE (street_name, city, state, postal_code)
+ADD CONSTRAINT addresses UNIQUE (street_name, city, state, postal_code);
 
 INSERT INTO address_types (type)
 VALUES ('SHIPPING'),('BILLING');
@@ -90,7 +90,7 @@ CREATE TABLE store_inventory (
 );
 
 CREATE TABLE carts (
-	id int PRIMARY KEY
+	id int PRIMARY KEY auto_increment
 );
 
 CREATE TABLE cart_join (
@@ -114,8 +114,8 @@ VALUES ('Green Eggs and Ham',65,'1960-08-12',0545002850,'Dr. Suess','../assets/i
 ('Make Magic! Do Good!',112,'2012-11-13',763657468,'Dallas Clayton','../assets/images/makemagic'),
 ('The Drama of the Gifted Child: The Search for the True Self',136,'1997-01-01',0465016901,'Alice Miller','../assets/images/giftedchild'),
 ('The Great Gatsby',152,'1925-04-10', 0743273567,'F. Scott Fitzgerald','../assets/images/greatgatsby'),
-('Percy Jackson and the Lightning Thief',377,'2006-04-01', 0786838655,'Rick Riordan','../assets/images/'),
-('Quantum Physics for Dummies',336,'2009-02-03', 1118460820,'Steven Holzner','../assets/images/');
+('Percy Jackson and the Lightning Thief',377,'2006-04-01', 0786838655,'Rick Riordan','../assets/images/lightning'),
+('Quantum Physics for Dummies',336,'2009-02-03', 1118460820,'Steven Holzner','../assets/images/quantum');
 
 
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
@@ -129,6 +129,38 @@ VALUES ('C.G. Jung Psychological Reflections : A New Anthology of His Writings, 
 INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
 VALUES ('Tao Te Ching (Illustrated Feng/English/Lippe Translation)','Lao Tsu',0307949303,'2011-11-01',184,'../assets/images/taoteching');
 
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('Interworld','Michael Reaves',0007523424,2007-26-06,304,'../assets/images/interworld');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('Where the Sidewalk Ends','Shel Silverstein',0060256672,1905-27-05,309,'../assets/images/sidewalk');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('The Future Evolution of Man: The Divine Life Upon Earth','Sri Aurobindo',0940985551,2003-11-04,168,'../assets/images/futureevolution');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('Total Freedom: The Essential Krishnamurti','Jiddu Krishnamurti',0060648805,1996-30-08,384,'../assets/images/totalfreedom');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('In Order to Live: A North Korean Girl\'s Journey to Freedom','Yeonmi Park','014310974X',2016-27-09,288,'../assets/images/inordertolive');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('The Seven Military Classics Of Ancient China','Ralph D. Sawyer',0465003044,2007-06-11,592,'../assets/images/sevenmilitaryclassics');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('Man\'s Search for Meaning',' Viktor E. Frankl',0807014273,2006-01-06,192,'../assets/images/manssearch');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('The Leader\'s Bookshelf','James Stavridis',1682471799,2017-15-03,288,'../assets/images/leadersbookshelf');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('The Inheritance Cycle 4-Book Trade Paperback Boxed Set: Eragon; Eldest; Brisingr; Inheritance','Christopher Paolini',449813223,2012-23-10,880,'../assets/images/inheritance');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('Chronicles of Tao: The Secret Life of a Taoist Master','Deng Ming-Dao',0062502190,1993-08-10,476,'../assets/images/chroniclesoftao');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('Dune','Frank Herbert','059309932X',1965-01-08,890,'../assets/images/dune');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('Design of Everyday Things: Revised','Don Norman',0465050654,2013-05-11,368,'../assets/images/designofeverydaythings');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('Astrophysics for People in a Hurry','Neil deGrasse Tyson',0393609391,2017-02-05,222,'../assets/images/astrophysicsinahurry');
+INSERT INTO books (title, author, isbn, publishdate, pagecount,imgpath) 
+VALUES ('Tao of Jeet Kune Do: Expanded Edition','Bruce Lee',0897502027,2011-01-11,250,'../assets/images/taojeetkunedo');
+
+
+
+
 INSERT INTO genres (name) values ('Children\'s');
 INSERT INTO genres (name) values ('Computer Science');
 INSERT INTO genres (name) values ('Self-Help');
@@ -140,12 +172,22 @@ INSERT INTO genres (name) values ('Historical');
 INSERT INTO genres (name) values ('Fantasy');
 INSERT INTO genres (name) values ('Nonfiction');
 INSERT INTO genres (name) values ('Science');
+INSERT INTO genres (name) values ('Poetry');
 
 INSERT INTO genre_join (book_id,genre_id)
 VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,1),(7,6),(8,7),(8,8),(9,7),(9,9),
 (10,10),(10,11),(11,2),(12,2),(13,6),(14,6),(15,4);
 
+INSERT INTO genre_join (book_id,genre_id)
+VALUES (16,7),(17,12),(18,4),(19,4),(20,8),(21,4),(22,8),(23,10),(24,7),(24,9),(25,7),(25,4),(26,7),(26,9),
+(27,10),(27,11),(28,10),(28,11),(29,10);
+
 INSERT INTO store_inventory (book_id,price,quantity)
 VALUES (1,8.99,7),(2,47.99,2),(3,13.19,5),(4,13.50,17),
 (5,12.74,10),(6,8.99,6),(7,10.99,11),(8,7.99,23),(9,13.99,7),
 (10,25.91,3),(11,39.99,8),(12,22.99,9),(13,15.99,15),(14,33.99,18), (15,14.99,12);
+
+INSERT INTO store_inventory (book_id,price,quantity)
+VALUES (16,18.99,2),(17,15.64,4),(18,7.59,8),(19,16.79,9),
+(20,14.49,12),(21,14.75,13),(22,8.11,14),(23,28.99,15),(24,30.99,3),
+(25,20.69,4),(26,31.99,10),(27,13.99,8),(28,18.95,5),(29,31.49,10);

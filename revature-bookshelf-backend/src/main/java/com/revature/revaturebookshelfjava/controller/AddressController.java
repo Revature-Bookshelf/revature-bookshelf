@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.List;
 
 
 @Slf4j
@@ -47,6 +48,15 @@ public class AddressController {
         return ResponseEntity.ok("JWT TEST");
     }
 
+    @RequestMapping(
+            method = RequestMethod.GET,
+            value = "/api/address"
+    )
+    public List<Address> getUserAddress() {
+        String username = extractUsername();
+        User user = userService.getUser(username);
+        return addressService.getAddressByUser(user);
+    }
     @RequestMapping(
             method = RequestMethod.POST,
             value = "/api/address"

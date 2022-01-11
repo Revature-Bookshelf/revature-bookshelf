@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public void register(User user, Cart cart) {
+    public User register(User user) {
 
         // Input User with plain-text password
         String hashedPassword = passwordEncoder.encode(user.getPassword());
@@ -62,9 +62,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if (!result.isEmpty()) { // Existing Record
             user.setAuthorities(List.of(result.get()));
         }
-        user.setCart(cart);
-        //Cart cart = cartRepository.save(newCart);
-        User newUser =userRepository.save(user);
+
+        return userRepository.save(user);
 
         // Creating New Cart for a New User
 

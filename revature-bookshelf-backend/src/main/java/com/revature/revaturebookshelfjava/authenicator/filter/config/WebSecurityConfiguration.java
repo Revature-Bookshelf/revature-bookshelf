@@ -4,6 +4,7 @@ import com.revature.revaturebookshelfjava.authenicator.filter.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,7 +39,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/api/users").permitAll()
+                .antMatchers(HttpMethod.GET,"/api/users").authenticated()
+                .antMatchers(HttpMethod.POST,"/api/users").permitAll()
+                .antMatchers("/api/books").permitAll()
                 .antMatchers("/api/address").authenticated()
                 .antMatchers("/api/cart").authenticated()
                 .antMatchers("/api/test").authenticated()

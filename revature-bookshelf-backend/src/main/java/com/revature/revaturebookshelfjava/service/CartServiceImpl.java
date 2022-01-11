@@ -22,6 +22,11 @@ public class CartServiceImpl implements CartService {
     private BookRepository bookRepository;
 
     @Override
+    public Cart createCart(Cart cart){
+        return cartRepository.save(cart);
+    }
+
+    @Override
     public Cart addItem(int bookId, User user) {
         // These Optionals should always be true
         Optional<Cart> cartOptional = getCartByUser(user);

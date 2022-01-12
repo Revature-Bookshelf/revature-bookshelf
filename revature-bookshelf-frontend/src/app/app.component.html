@@ -11,14 +11,12 @@
         <li class="nav-item">
           <a routerLink="user-profile" routerLinkActive="active">User Profile</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Placeholder</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Placeholder</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Placeholder</a>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <!-- add bellow routerLinkActive="active" [routerLink]="['/login']" -->
+          <button type="button" class="btn btn-primary btn-sm m-3" 
+          value="submit" (click)= handleLogout()>
+          Logout
+      </button>
         </li>
       </ul>
       <app-cart-access></app-cart-access>

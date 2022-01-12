@@ -13,16 +13,20 @@ export class BookViewComponent implements OnInit {
 
   @Input("value") book: any = {}
   constructor(
-    private cartService: CartService, 
+    private cartService: CartService,
     private userService: UserService,
     private router: Router
-    ) { }
+  ) { }
 
   addToCart(bookId) {
-    if(!this.userService.isLoggedIn()){
+    if (!this.userService.isLoggedIn()) {
       this.router.navigate(['/login'])
-    }else{
-      this.cartService.addToCart(bookId);
+    } else {
+      this.cartService.addToCart(bookId).subscribe({
+        next: (response: any) => {
+          console.log(response)
+        }
+      });
     }
   }
   ngOnInit(): void {

@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `monodb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `monodb`;
+CREATE DATABASE  IF NOT EXISTS `monoDB` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `monoDB`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
--- Host: localhost    Database: monodb
+-- Host: localhost    Database: monoDB
 -- ------------------------------------------------------
 -- Server version	8.0.27
 
@@ -147,7 +147,34 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,'Green Eggs and Ham',65,'1960-08-12','0545002850','Dr. Suess','../assets/images/greeneggs'),(2,'The Algorithm Design Manual, 3rd Edition',810,'2020-10-06','3030542556','Steven S. Skiena','../assets/images/thealgorithms'),(3,'The Organized Mind',544,'2015-09-01','9780147516','Daniel J. Levitin','../assets/images/organizedmind'),(4,'Crime and Punishment',576,'1866-01-01','9781593080','Fyodor Dostoyevsky','../assets/images/crimeandpunishment'),(5,'From Crook to Cook',192,'2018-10-23','1452179611','Snoop Dogg','../assets/images/crooktocook'),(6,'Make Magic! Do Good!',112,'2012-11-13','763657468','Dallas Clayton','../assets/images/makemagic'),(7,'The Drama of the Gifted Child: The Search for the True Self',136,'1997-01-01','0465016901','Alice Miller','../assets/images/giftedchild'),(8,'The Great Gatsby',152,'1925-04-10','0743273567','F. Scott Fitzgerald','../assets/images/greatgatsby'),(9,'Percy Jackson and the Lightning Thief',377,'2006-04-01','0786838655','Rick Riordan','../assets/images/lightning'),(10,'Quantum Physics for Dummies',336,'2009-02-03','1118460820','Steven Holzner','../assets/images/quantum'),(11,'Design Patterns: Elements of Reusable Object-Oriented Software',416,'1994-11-10','0201633612','Erich Gamma','../assets/images/designpatterns'),(12,'Clean Architecture: A Craftsman\'s Guide to Software Structure and Design',432,'2017-09-10','0134494168','Robert Martin','../assets/images/cleanarchitecture'),(13,'The Lost Art of Listening, Third Edition: How Learning to Listen Can Improve Relationships',370,'2021-03-24','1462542743','Michael P. Nichols','../assets/images/listening'),(14,'C.G. Jung Psychological Reflections : A New Anthology of His Writings, 1905-1961',393,'1973-05-01','0691017867','C. G. Jung','../assets/images/jungreflections'),(15,'Tao Te Ching (Illustrated Feng/English/Lippe Translation)',184,'2011-11-01','0307949303','Lao Tsu','../assets/images/taoteching'),(16,'Interworld',304,'2007-09-06','0007523424','Michael Reaves','../assets/images/interworld'),(17,'Where the Sidewalk Ends',309,'1905-05-05','0060256672','Shel Silverstein','../assets/images/sidewalk'),(18,'The Future Evolution of Man: The Divine Life Upon Earth',168,'2003-11-04','0940985551','Sri Aurobindo','../assets/images/futureevolution'),(19,'Total Freedom: The Essential Krishnamurti',384,'1996-12-08','0060648805','Jiddu Krishnamurti','../assets/images/totalfreedom'),(20,'In Order to Live: A North Korean Girl\'s Journey to Freedom',288,'2016-11-09','0143109740','Yeonmi Park','../assets/images/inordertolive'),(21,'The Seven Military Classics Of Ancient China',592,'2007-06-11','0465003044','Ralph D. Sawyer','../assets/images/sevenmilitaryclassics'),(22,'Man\'s Search for Meaning',192,'2006-01-06','0807014273',' Viktor E. Frankl','../assets/images/manssearch'),(23,'The Leader\'s Bookshelf',288,'2017-10-03','1682471799','James Stavridis','../assets/images/leadersbookshelf'),(24,'The Inheritance Cycle 4-Book Trade Paperback Boxed Set: Eragon; Eldest; Brisingr; Inheritance',880,'2017-08-10','449813223','Christopher Paolini','../assets/images/inheritance'),(25,'Chronicles of Tao: The Secret Life of a Taoist Master',476,'1993-08-10','0062502190','Deng Ming-Dao','../assets/images/chroniclesoftao'),(26,'Dune',890,'1965-01-08','0593099320','Frank Herbert','../assets/images/dune'),(27,'Design of Everyday Things: Revised',368,'2013-05-11','0465050654','Don Norman','../assets/images/designofeverydaythings'),(28,'Astrophysics for People in a Hurry',222,'2017-02-05','0393609391','Neil deGrasse Tyson','../assets/images/astrophysicsinahurry'),(29,'Tao of Jeet Kune Do: Expanded Edition',250,'2011-01-11','0897502027','Bruce Lee','../assets/images/taojeetkunedo');
+INSERT INTO `books` VALUES (1,'Green Eggs and Ham',65,'1960-08-12','0545002850','Dr. Suess','../assets/images/greeneggs.jpg'),
+(2,'The Algorithm Design Manual, 3rd Edition',810,'2020-10-06','3030542556','Steven S. Skiena','../assets/images/thealgorithms.jpg'),
+(3,'The Organized Mind',544,'2015-09-01','9780147516','Daniel J. Levitin','../assets/images/organizedmind.jpg'),
+(4,'Crime and Punishment',576,'1866-01-01','9781593080','Fyodor Dostoyevsky','../assets/images/crimeandpunishment.jpg'),
+(5,'From Crook to Cook',192,'2018-10-23','1452179611','Snoop Dogg','../assets/images/crooktocook.jpg'),
+(6,'Make Magic! Do Good!',112,'2012-11-13','763657468','Dallas Clayton','../assets/images/makemagic.jpg'),
+(7,'The Drama of the Gifted Child: The Search for the True Self',136,'1997-01-01','0465016901','Alice Miller','../assets/images/giftedchild.jpg'),
+(8,'The Great Gatsby',152,'1925-04-10','0743273567','F. Scott Fitzgerald','../assets/images/greatgatsby.jpg'),
+(9,'Percy Jackson and the Lightning Thief',377,'2006-04-01','0786838655','Rick Riordan','../assets/images/lightning.jpg'),
+(10,'Quantum Physics for Dummies',336,'2009-02-03','1118460820','Steven Holzner','../assets/images/quantum.jpg'),
+(11,'Design Patterns: Elements of Reusable Object-Oriented Software',416,'1994-11-10','0201633612','Erich Gamma','../assets/images/designpatterns'),
+(12,'Clean Architecture: A Craftsman\'s Guide to Software Structure and Design',432,'2017-09-10','0134494168','Robert Martin','../assets/images/cleanarchitecture.jpg'),
+(13,'The Lost Art of Listening, Third Edition: How Learning to Listen Can Improve Relationships',370,'2021-03-24','1462542743','Michael P. Nichols','../assets/images/listening.jpg'),
+(14,'C.G. Jung Psychological Reflections : A New Anthology of His Writings, 1905-1961',393,'1973-05-01','0691017867','C. G. Jung','../assets/images/jungreflections.jpg'),
+(15,'Tao Te Ching (Illustrated Feng/English/Lippe Translation)',184,'2011-11-01','0307949303','Lao Tsu','../assets/images/taoteching.jpg'),
+(16,'Interworld',304,'2007-09-06','0007523424','Michael Reaves','../assets/images/interworld.jpg'),
+(17,'Where the Sidewalk Ends',309,'1905-05-05','0060256672','Shel Silverstein','../assets/images/sidewalk.jpg'),
+(18,'The Future Evolution of Man: The Divine Life Upon Earth',168,'2003-11-04','0940985551','Sri Aurobindo','../assets/images/futureevolution.jpg'),
+(19,'Total Freedom: The Essential Krishnamurti',384,'1996-12-08','0060648805','Jiddu Krishnamurti','../assets/images/totalfreedom.jpg'),
+(20,'In Order to Live: A North Korean Girl\'s Journey to Freedom',288,'2016-11-09','0143109740','Yeonmi Park','../assets/images/inordertolive.jpg'),
+(21,'The Seven Military Classics Of Ancient China',592,'2007-06-11','0465003044','Ralph D. Sawyer','../assets/images/sevenmilitaryclassics.jpg'),
+(22,'Man\'s Search for Meaning',192,'2006-01-06','0807014273',' Viktor E. Frankl','../assets/images/manssearch.jpg'),
+(23,'The Leader\'s Bookshelf',288,'2017-10-03','1682471799','James Stavridis','../assets/images/leadersbookshelf.jpg'),
+(24,'The Inheritance Cycle 4-Book Trade Paperback Boxed Set: Eragon; Eldest; Brisingr; Inheritance',880,'2017-08-10','449813223','Christopher Paolini','../assets/images/inheritance.jpg'),
+(25,'Chronicles of Tao: The Secret Life of a Taoist Master',476,'1993-08-10','0062502190','Deng Ming-Dao','../assets/images/chroniclesoftao.jpg'),
+(26,'Dune',890,'1965-01-08','0593099320','Frank Herbert','../assets/images/dune'),(27,'Design of Everyday Things: Revised',368,'2013-05-11','0465050654','Don Norman','../assets/images/designofeverydaythings.jpg'),
+(28,'Astrophysics for People in a Hurry',222,'2017-02-05','0393609391','Neil deGrasse Tyson','../assets/images/astrophysicsinahurry.jpg'),
+(29,'Tao of Jeet Kune Do: Expanded Edition',250,'2011-01-11','0897502027','Bruce Lee','../assets/images/taojeetkunedo.jpg');
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -361,11 +388,11 @@ INSERT INTO `users` VALUES (1,'test1First',NULL,'test1Last','test1@mail.com','$2
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'monodb'
+-- Dumping events for database 'monoDB'
 --
 
 --
--- Dumping routines for database 'monodb'
+-- Dumping routines for database 'monoDB'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

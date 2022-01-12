@@ -6,13 +6,17 @@ import { HttpClient } from "@angular/common/http";
 })
 export class CartService {
 
-  apiUrl = "http://localhost:8080/api/cart";
+  apiUrl = "http://localhost:9001/api/cart";
 
   constructor(private httpClient: HttpClient) { }
 
-  cart: any = {}
+  cart: any = []
   items: any[] = [];
   cartCount = Object.keys(this.cart).length
+
+  getCart() {
+    return this.httpClient.get(`${this.apiUrl}/view`);
+  }
 
   addToCart(bookId: number) {
     return this.httpClient.post(`${this.apiUrl}/add/{bookId}`, []);

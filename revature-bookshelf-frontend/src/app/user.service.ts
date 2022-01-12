@@ -50,6 +50,7 @@ export class UserService {
         })
       })
   }
+  
 
   doLogout() {
     localStorage.removeItem('token')

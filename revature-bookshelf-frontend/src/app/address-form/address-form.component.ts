@@ -43,19 +43,21 @@ export class AddressFormComponent implements OnInit {
     private router: Router
     ) { 
       this.formBuilder.group({
-        floatLabel: this.floatLabelControl
-      })
+        floatLabel: this.floatLabelControl})
     }
 
   ngOnInit(): void {
     this.addressService.addressStream
     .subscribe({
       next: (e: any) => {
-        if (e.action === "ADDRESS_ADDED")
+        if (e.action === 'ADDRESS_ADDED')
         this.router.navigate(["/user-profile"]);
+        //this.goToPage(`/user-profile`);
+
       }
     })
   }
+
   handleSubmit() {
     if (this.addressForm.valid) {
       let submission = this.addressForm.value;
@@ -67,6 +69,10 @@ export class AddressFormComponent implements OnInit {
       //this.userService.doLogin(loginSubmission)
       // userService.userStream streams out actions
     }
+  }
+
+  goToPage(pageName:string){
+    this.router.navigate([`${pageName}`]);
   }
 
 }

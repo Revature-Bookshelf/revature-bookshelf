@@ -38,23 +38,23 @@ export class AddressService {
   }
 
   addAddress(formData: any) {
-    const morphedFormData = {
-      "streetName" : formData.streetName,
-      "city" : formData.city,
-      "state" : formData.state,
-      "postalCode" : formData.postalCode,
-      "types" : [
+    const morphedFormData: Object = {
+      streetName : formData.streetName,
+      city : formData.city,
+      state : formData.state,
+      postalCode : formData.postalCode,
+      types : [
             {
-                "type" : formData.type
+                type : formData.type
             }
           ]
     }
-    this.httpClient.post(`${this.endpoint}/api/addresses`, morphedFormData)
+
+    this.httpClient.post(`${this.endpoint}/api/address`, morphedFormData)
       .subscribe({
         next: (response: any) => {
-          console.log(response)
           this.addressStream.next({
-            action: "ADDRESS_ADDED",
+            action: 'ADDRESS_ADDED',
           })
         }
       })

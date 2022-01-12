@@ -47,6 +47,7 @@ public class CartServiceImplTest {
         Mockito.when(cartRepositoryMock.findByUserId(3)).thenReturn(Optional.empty());
     }
 
+    @Disabled
     @Test
     @DisplayName("Add Item Cart Test")
     public void addItemTest() {

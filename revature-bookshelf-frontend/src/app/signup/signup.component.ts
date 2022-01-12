@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
     this.userService.userStream.subscribe({
       next: (e: any) => {
         if (e.action === "REGISTER_SUCCESS") {
-          this.router.navigate(["/login-form"])
+          this.router.navigate(["/login"])
         }
       }
     })

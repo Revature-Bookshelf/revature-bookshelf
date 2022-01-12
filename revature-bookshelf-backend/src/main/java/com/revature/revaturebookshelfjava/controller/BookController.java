@@ -12,7 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -40,6 +45,7 @@ public class BookController {
 
     @GetMapping("/books/available")
     public List<StoreProduct> getAvailableBooks() {
+//        return bookRepository.findAllAvailable();
         return bookRepository.findAllAvailable();
     }
 

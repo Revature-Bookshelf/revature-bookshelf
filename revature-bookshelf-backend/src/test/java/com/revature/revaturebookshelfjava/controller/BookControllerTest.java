@@ -8,10 +8,7 @@ import com.revature.revaturebookshelfjava.exception.InvalidSearchPropertyExcepti
 import com.revature.revaturebookshelfjava.repository.BookRepository;
 import com.revature.revaturebookshelfjava.search_algorithm.SearchResult;
 import com.revature.revaturebookshelfjava.service.FilterService;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 
 import java.util.List;
@@ -47,6 +44,7 @@ public class BookControllerTest {
                 .thenReturn(List.of(new StoreProduct(new Book(), 1, 9.99)));
     }
 
+    @Disabled
     @Test
     @DisplayName("Find All Store Products Test")
     public void findAllAvailableTest() {

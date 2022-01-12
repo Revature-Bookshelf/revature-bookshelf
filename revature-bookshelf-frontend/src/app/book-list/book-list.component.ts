@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class BookListComponent implements OnInit {
 
   books: Array<any> = []
-
+  spreadBooks: Array<any> = [];
   constructor(private booksService: BooksService, private router: Router) {
   }
 
@@ -21,8 +21,14 @@ export class BookListComponent implements OnInit {
     if (this.selectedValue == "available") {
       this.booksService.getAvailableBooks().subscribe({
         next: (response: any) => {
-          console.log(response)
-          this.books = response
+          console.log(...response)
+          this.spreadBooks.push(
+            {
+              ...response.book,
+              quantity : response.quantity,
+              price : response.price
+            })
+          this.books = this.spreadBooks;
         }
       })
     } else if (this.selectedValue == "all") {

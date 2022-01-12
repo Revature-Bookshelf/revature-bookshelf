@@ -14,13 +14,14 @@
         Welcome to <br />
         Revature Bookshelf
       </h1>
-      <ng-container class="col-sm-4" *ngIf="!isLoggedIn">
-        <button
+      <!-- <ng-container class="col-sm-4" >
+        <a
           type="button"
           class="btn btn-light btn-lg m-3"
           routerLinkActive="active"
           [routerLink]="['/login']"
           value="submit"
+          *ngIf="isLoggedIn" 
         >
           Login
         </button>
@@ -29,11 +30,12 @@
           class="btn btn-outline-light btn-lg m-3"
           routerLinkActive="active"
           routerLink="signup"
-          ="submit"
+          value="submit"
+          *ngIf="isLoggedIn"
         >
           Sign up
-        </button>
-      </ng-container>
+        </a>
+      </ng-container> -->
     </ng-container>
   </div>
 </header>

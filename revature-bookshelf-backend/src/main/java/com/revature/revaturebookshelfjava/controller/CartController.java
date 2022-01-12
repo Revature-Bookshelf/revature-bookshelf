@@ -1,6 +1,7 @@
 package com.revature.revaturebookshelfjava.controller;
 
 
+import com.revature.revaturebookshelfjava.authenicator.extractor.UserDetailsExtractor;
 import com.revature.revaturebookshelfjava.entity.Book;
 import com.revature.revaturebookshelfjava.entity.Cart;
 import com.revature.revaturebookshelfjava.entity.User;
@@ -36,17 +37,27 @@ public class CartController {
     private CartService cartService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserDetailsExtractor userDetailsExtractor;
+
+    public CartController(CartRepository cartRepository, UserRepository userRepository, CartService cartService, UserService userService, UserDetailsExtractor userDetailsExtractor) {
+        this.cartRepository = cartRepository;
+        this.userRepository = userRepository;
+        this.cartService = cartService;
+        this.userService = userService;
+        this.userDetailsExtractor = userDetailsExtractor;
+    }
 
     @GetMapping("/view")
     public List<Book> getCart() {
-        String username = extractUsername();
+        String username = userDetailsExtractor.extractUsername();
         User user = userService.getUser(username);
         return cartService.getAllItems(user);
     }
 
     @PostMapping("/add/{bookId}")
     public ResponseEntity<?> postItem(@PathVariable(name = "bookId") int bookId) {
-        String username = extractUsername();
+        String username = userDetailsExtractor.extractUsername();
         User user = userService.getUser(username);
         cartService.addItem(bookId, user);
         return ResponseEntity.status(HttpStatus.CREATED).body("Book item #" + bookId + " successfully added");
@@ -54,7 +65,7 @@ public class CartController {
 
     @DeleteMapping("/delete/{bookId}")
     public ResponseEntity<?> deleteItem(@PathVariable(name = "bookId") int bookId) {
-        String username = extractUsername();
+        String username = userDetailsExtractor.extractUsername();
         User user = userService.getUser(username);
 
         try {
@@ -72,9 +83,4 @@ public class CartController {
         return ResponseEntity.ok(Book);
     }
      */
-    public String extractUsername() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        return userDetails.getUsername();
-    }
 }

@@ -53,6 +53,18 @@ public class User {
     private String middleName;
     private String lastName;
 
+    public User(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public User(int id, String email, String firstName, String middleName, String lastName) {
+        this.id = id;
+        this.email = email;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+    }
+
     @Override
     public String toString() {
         return "User{" +

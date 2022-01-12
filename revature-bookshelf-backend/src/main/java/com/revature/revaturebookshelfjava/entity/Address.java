@@ -35,6 +35,21 @@ public class Address {
     @JsonIgnore
     private List<User> user;
 
+    public Address(String streetName, String city, String state, int postalCode) {
+        this.streetName = streetName;
+        this.city = city;
+        this.state = state;
+        this.postalCode = postalCode;
+    }
+
+    public Address(String streetName, String city, String state, int postalCode, List<AddressType> types) {
+        this.streetName = streetName;
+        this.city = city;
+        this.state = state;
+        this.postalCode = postalCode;
+        this.types = types;
+    }
+
     @Override
     public String toString() {
         return "Address{" +

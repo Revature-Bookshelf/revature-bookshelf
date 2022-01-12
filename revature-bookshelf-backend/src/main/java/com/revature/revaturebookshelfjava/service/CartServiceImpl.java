@@ -21,6 +21,11 @@ public class CartServiceImpl implements CartService {
     @Autowired
     private BookRepository bookRepository;
 
+    public CartServiceImpl(CartRepository cartRepository, BookRepository bookRepository) {
+        this.cartRepository = cartRepository;
+        this.bookRepository = bookRepository;
+    }
+
     @Override
     public Cart createCart(Cart cart){
         return cartRepository.save(cart);
@@ -37,8 +42,8 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Cart deleteItem(int bookId, User user) throws CartItemNotExistException {
-        // These Optionals should always be true
+    public Cart deleteItem(int bookId, User user) {
+        // These Optionals should always be present
         Optional<Cart> cartOptional = getCartByUser(user);
         Cart cart = cartOptional.get();
         Optional<Book> book = bookRepository.findById(bookId);

@@ -24,4 +24,10 @@ public class StoreProduct {
     private int quantity;
     private double price;
 
+
+    public StoreProduct(Book book, int quantity, double price) {
+        this.book = book;
+        this.quantity = quantity;
+        this.price = price;
+    }
 }

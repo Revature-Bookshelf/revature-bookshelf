@@ -27,13 +27,13 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard]},
+  { path: 'user-profile/**', component: UserProfileComponent, canActivate: [AuthGuard]},
+  { path: 'user-profile/add', component: AddressFormComponent,  canActivate: [AuthGuard]}.
   { path: 'search', component: SearchComponent },
   { path: 'cart-view', component: CartViewComponent },
   { path: 'cart-access', component: CartAccessComponent },
   { path: 'book-view', component: BookViewComponent },
-  { path: 'book-list', component: BookListComponent },
-  { path: 'user-profile/add', component: AddressFormComponent}
+  { path: 'book-list', component: BookListComponent }
 ];
 
 @NgModule({

@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { AddressService } from '../address.service';
+import { Router } from '@angular/router';
 
 
 
@@ -31,18 +32,12 @@ export class UserProfileComponent implements OnInit {
     private userService: UserService,
     private actRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private addressService: AddressService
-  ) 
-  
-  {
-    // let id = this.actRoute.snapshot.paramMap.get('id');
-    //   this.userService.getUserProfile(id).subscribe(res => {
-    //   this.currentUser = res.msg;
-    // })
-  }
+    private addressService: AddressService,
+    private router: Router
+  ){}
 
-  updateProfile(){
-    console.log(this.profileForm.value)
+  goToPage(pageName:string){
+    this.router.navigate([`${pageName}`]);
   }
 
 

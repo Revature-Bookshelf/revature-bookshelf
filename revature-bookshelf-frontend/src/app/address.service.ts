@@ -38,7 +38,18 @@ export class AddressService {
   }
 
   addAddress(formData: any) {
-    this.httpClient.post(`${this.endpoint}/api/addresses`, formData)
+    const morphedFormData = {
+      "streetName" : formData.streetName,
+      "city" : formData.city,
+      "state" : formData.state,
+      "postalCode" : formData.postalCode,
+      "types" : [
+            {
+                "type" : formData.type
+            }
+          ]
+    }
+    this.httpClient.post(`${this.endpoint}/api/addresses`, morphedFormData)
       .subscribe({
         next: (response: any) => {
           console.log(response)

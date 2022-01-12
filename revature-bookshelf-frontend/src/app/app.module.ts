@@ -32,8 +32,9 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'cart-view', component: CartViewComponent },
   { path: 'cart-access', component: CartAccessComponent },
-  { path: 'book-view', component: BookViewComponent },
-  { path: 'book-list', component: BookListComponent }
+  { path: 'books/view', component: BookViewComponent },
+  { path: 'books', component: BookListComponent }
+  ,
 ];
 
 @NgModule({

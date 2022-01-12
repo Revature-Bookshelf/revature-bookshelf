@@ -12,6 +12,14 @@ export class CartViewComponent {
 
   constructor(private cartService: CartService) { }
 
+  deleteBook(bookId) {
+    this.cartService.deleteItems(bookId).subscribe({
+      next: (response: any) => {
+        console.log(response)
+      }
+    });
+  }
+
   ngOnInit() {
     this.cart = this.cartService.getCart().subscribe({
       next: (response: any) => {

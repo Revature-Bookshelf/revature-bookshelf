@@ -21,6 +21,7 @@
             <td>{{book.author}}</td>
             <td>{{book.genres[0] ? book.genres[0] : ''}}</td>
             <td>1</td>
+            <td><button (click)="deleteBook(book.id)">delete</button></td>
         </tr>
     </tbody>
 </table>

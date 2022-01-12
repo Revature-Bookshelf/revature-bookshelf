@@ -14,18 +14,18 @@ export class BookListComponent implements OnInit {
   constructor(private booksService: BooksService, private router: Router) {
   }
 
-  selectedValue = "all";
+  selectedValue = "available";
 
 
   getBooks() {
-    if (this.selectedValue == "all") {
-      this.booksService.getAllBooks().subscribe({
+    if (this.selectedValue == "available") {
+      this.booksService.getAvailableBooks().subscribe({
         next: (response: any) => {
           this.books = response
         }
       })
-    } else if (this.selectedValue == "available") {
-      this.booksService.getAvailableBooks().subscribe({
+    } else if (this.selectedValue == "all") {
+      this.booksService.getAllBooks().subscribe({
         next: (response: any) => {
           this.books = response
         }

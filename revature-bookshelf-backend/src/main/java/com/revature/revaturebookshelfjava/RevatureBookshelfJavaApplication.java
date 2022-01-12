@@ -21,7 +21,7 @@ public class RevatureBookshelfJavaApplication {
 
     // TODO: Resolve @Bean conflict ?
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

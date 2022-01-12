@@ -1,6 +1,7 @@
 package com.revature.revaturebookshelfjava.controller;
 
 import com.revature.revaturebookshelfjava.authenicator.extractor.UserDetailsExtractor;
+import com.revature.revaturebookshelfjava.controller.payload.HttpResponseBody;
 import com.revature.revaturebookshelfjava.entity.Address;
 import com.revature.revaturebookshelfjava.entity.User;
 import com.revature.revaturebookshelfjava.service.AddressService;
@@ -81,7 +82,8 @@ public class AddressController {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(e.getMessage());
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body("user's address posted");
+        HttpResponseBody httpResponseBody = new HttpResponseBody("user's address posted");
+        return ResponseEntity.status(HttpStatus.CREATED).body(httpResponseBody);
     }
 
     public ResponseEntity<?> putUserAddress(@RequestBody Address address) {

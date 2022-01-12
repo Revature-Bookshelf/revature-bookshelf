@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.userService.userStream.subscribe({
       next: (e: any) => {
         if (e.action === "LOGIN_SUCCESS")
-          this.router.navigate(["profile/:id"])
+        this.router.navigate(["user-profile/"])
         if (e.action === "LOGIN_FAILED") {
           console.log(e);
           this.message = "Invalid username and/or password"

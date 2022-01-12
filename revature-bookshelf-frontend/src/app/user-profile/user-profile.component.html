@@ -1,9 +1,7 @@
- <div class=" body container rounded bg-white mt-5 mb-5">
-  <div class="row">
-      <div class="col-md-3 border-right">
+ <div class="px-5 container mt-5">
+  <div class=" row row-cols-2">
+      <div class=" px-lg-5 border-right">
           <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-            <!-- <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-             -->
              <svg xmlns="http://www.w3.org/2000/svg" width="166" height="166" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
               <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
@@ -11,7 +9,10 @@
             <div class="mt-3">
              <p>Email:  {{this.email}}</p> 
             </div>
-           
+
+             <div class="align-content-end">
+            <button class="btn btn-primary profile-button"  type="submit" (click)="goToPage('/addressForm')">Add Address</button> 
+        </div>
           </div>
       </div>
       <div class="col-md-5 border-right">
@@ -39,17 +40,37 @@
                     <label class="labels col-md-6" for="email">Email</label>  
                     <input id="email" type="text" formControlName="email" placeholder="{{this.currentUser.email}}">
                   </div>  
-              </div>              
-                
-              <div class="mt-5 text-center">
-                <button class="btn btn-primary profile-button"  type="submit" (click)="updateProfile()" [disabled]="!profileForm.valid">Save Profile</button>   
-              </div>
-
-              <app-address-card *ngFor="let address of addresses" [addressInput]="address"></app-address-card>
+              </div>        
+              <!-- <div class= "row cardContainer mx-3">
+                <app-address-card class = "col col-3" *ngFor="let address of addresses" [addressInput]="address"></app-address-card>
+              </div>       -->
+              
+              
               </form>            
              
           </div>
       </div>
   </div>
 </div>
+<hr>
+
+<div >
+  <div class= "row cardContainer mx-3">
+    <app-address-card class = "col col-3" *ngFor="let address of addresses" [addressInput]="address"></app-address-card>
+  </div> 
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

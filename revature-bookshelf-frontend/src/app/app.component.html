@@ -14,29 +14,17 @@
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a routerLink="user-profile" routerLinkActive="active"
-            >User Profile</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Placeholder</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Placeholder</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Placeholder</a>
+          <a routerLink="user-profile" routerLinkActive="active">Profile</a>
         </li>
       </ul>
       <app-cart-access></app-cart-access>
-      <form class="d-flex">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="find your next book..."
-        />
-        <button class="btn btn-warning btn-sm" type="submit">Search</button>
-      </form>
+      <a
+        routerLink="search"
+        routerLinkActive="active"
+        class="btn btn-warning btn-sm"
+        type="submit"
+        >Search</a
+      >
     </div>
   </div>
 </nav>

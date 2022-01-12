@@ -22,4 +22,7 @@ public class AddressType {
 //    @ManyToMany(mappedBy = "types")
 //    private List<Address> addresses;
 
+    public AddressType(String type) {
+        this.type = type;
+    }
 }

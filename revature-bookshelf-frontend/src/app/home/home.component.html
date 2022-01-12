@@ -15,7 +15,7 @@
         Revature Bookshelf
       </h1>
       <ng-container class="col-sm-4" *ngIf="!isLoggedIn">
-        <a
+        <button
           type="button"
           class="btn btn-light btn-lg m-3"
           routerLinkActive="active"
@@ -23,8 +23,8 @@
           value="submit"
         >
           Login
-        </a>
-        <a
+        </button>
+        <button
           type="button"
           class="btn btn-outline-light btn-lg m-3"
           routerLinkActive="active"
@@ -32,7 +32,7 @@
           ="submit"
         >
           Sign up
-        </a>
+        </button>
       </ng-container>
     </ng-container>
   </div>
@@ -164,18 +164,20 @@
         class="btn btn-lg m-3 social-details"
         ><i class="fab fa-google-plus-square"></i> Google</a
       >
-      <a
+      <button
         href="https://pinterest.com/"
         target="_blank"
         class="btn btn-lg m-3 social-details"
-        ><i class="fab fa-pinterest-square"></i>Pinterest</a
       >
-      <a
+        <i class="fab fa-pinterest-square"></i>Pinterest
+      </button>
+      <button
         href="https://twitter.com/"
         target="_blank"
         class="btn btn-lg m-3 social-details"
-        ><i class="fab fa-twitter"></i> Twitter</a
       >
+        <i class="fab fa-twitter"></i> Twitter
+      </button>
     </div>
   </div>
 </section>

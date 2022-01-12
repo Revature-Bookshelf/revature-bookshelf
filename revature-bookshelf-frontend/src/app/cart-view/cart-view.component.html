@@ -1,4 +1,4 @@
-<table class="table" *ngFor="let book of cart">
+<table class="table">
     <thead>
         <tr>
             <td>Item#</td>
@@ -7,19 +7,21 @@
             <td>Publish date</td>
             <td>ISBN</td>
             <td>Author</td>
-            <td>Genere</td>
+            <td>Genre</td>
             <td>Quantity</td>
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let book of cart">
             <td>{{book.id}}</td>
             <td>{{book.title}}</td>
             <td>{{book.pageCount}}</td>
             <td>{{book.publishDate.split('T')[0]}}</td>
             <td>{{book.isbn}}</td>
             <td>{{book.author}}</td>
-            <td>{{book.genres[0] ? book.genres[0] : ''}}</td>
+            <!--             <td>{{book.genres[0] ? book.genres[0].name : ''}}</td>
+ -->
+            <td *ngFor="let prop of book.genres">{{prop.name ? prop.name : ''}}</td>
             <td>1</td>
         </tr>
     </tbody>

@@ -2,6 +2,7 @@ package com.revature.revaturebookshelfjava.controller;
 
 
 import com.revature.revaturebookshelfjava.authenicator.extractor.UserDetailsExtractor;
+import com.revature.revaturebookshelfjava.controller.payload.HttpResponseBody;
 import com.revature.revaturebookshelfjava.entity.Book;
 import com.revature.revaturebookshelfjava.entity.Cart;
 import com.revature.revaturebookshelfjava.entity.User;
@@ -60,7 +61,8 @@ public class CartController {
         String username = userDetailsExtractor.extractUsername();
         User user = userService.getUser(username);
         cartService.addItem(bookId, user);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Book item #" + bookId + " successfully added");
+        HttpResponseBody httpResponseBody = new HttpResponseBody("Book item #" + bookId + " successfully added");
+        return ResponseEntity.status(HttpStatus.CREATED).body(httpResponseBody);
     }
 
     @DeleteMapping("/delete/{bookId}")
@@ -70,9 +72,11 @@ public class CartController {
 
         try {
             cartService.deleteItem(bookId, user);
-            return ResponseEntity.ok().body("Book item #" + bookId + " successfully deleted");
+            HttpResponseBody httpResponseBody = new HttpResponseBody("Book item #" + bookId + " successfully deleted");
+            return ResponseEntity.ok().body(httpResponseBody);
         } catch (CartItemNotExistException e) {
-            return ResponseEntity.badRequest().body("CartItemNotExistException");
+            HttpResponseBody httpResponseBody = new HttpResponseBody("CartItemNotExistException");
+            return ResponseEntity.badRequest().body(httpResponseBody);
         }
     }
 

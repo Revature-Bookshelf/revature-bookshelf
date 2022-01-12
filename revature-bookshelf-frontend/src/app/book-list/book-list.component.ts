@@ -21,6 +21,7 @@ export class BookListComponent implements OnInit {
     if (this.selectedValue == "all") {
       this.booksService.getAllBooks().subscribe({
         next: (response: any) => {
+          console.log(response)
           this.books = response
         }
       })

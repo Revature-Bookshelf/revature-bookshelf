@@ -19,7 +19,7 @@ export class CartService {
   }
 
   addToCart(bookId: number) {
-    return this.httpClient.post(`${this.apiUrl}/add/{bookId}`, []);
+    return this.httpClient.post(`${this.apiUrl}/add/${bookId}`, []);
   }
 
   deleteItems(bookId: number) {

@@ -7,7 +7,7 @@ import jwt_decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
- 
+
 export class UserService {
   endpoint: string = 'http://localhost:9001';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -27,7 +27,7 @@ export class UserService {
   }
 
   doLogin(credentials: any) {
-    this.httpClient.post(`${this.endpoint}login`, credentials)
+    this.httpClient.post(`${this.endpoint}/login`, credentials)
       .subscribe({
         next: (response: any) => {
           localStorage.setItem("token", response.jwt);
@@ -87,9 +87,9 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-    getUser() {
-      return this.httpClient.get(`${this.endpoint}/api/user/:id`); 
-    }
+  getUser() {
+    return this.httpClient.get(`${this.endpoint}/api/user/:id`);
+  }
 
 
 }

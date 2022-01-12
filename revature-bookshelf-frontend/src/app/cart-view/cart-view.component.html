@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table" *ngFor="let book of cart">
     <thead>
         <tr>
             <td>Item#</td>
@@ -13,13 +13,13 @@
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
-            <td>The Last Thing He Told Me</td>
-            <td>320</td>
-            <td>05/04/2021</td>
-            <td>ISBN number</td>
-            <td>Laura Dave</td>
-            <td>Fiction&Literature</td>
+            <td>{{book.id}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.pageCount}}</td>
+            <td>{{book.publishDate.split('T')[0]}}</td>
+            <td>{{book.isbn}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.genres[0] ? book.genres[0] : ''}}</td>
             <td>1</td>
         </tr>
     </tbody>

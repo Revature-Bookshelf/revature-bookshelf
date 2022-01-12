@@ -1,11 +1,13 @@
 package com.revature.revaturebookshelfjava.controller;
 
+import com.revature.revaturebookshelfjava.authenicator.extractor.UserDetailsExtractor;
 import com.revature.revaturebookshelfjava.controller.payload.HttpResponseBody;
 import com.revature.revaturebookshelfjava.entity.Cart;
 import com.revature.revaturebookshelfjava.entity.User;
 import com.revature.revaturebookshelfjava.service.CartService;
 import com.revature.revaturebookshelfjava.service.UserService;
 
+import lombok.AllArgsConstructor;
 import nonapi.io.github.classgraph.json.JSONDeserializer;
 import nonapi.io.github.classgraph.json.JSONSerializer;
 import nonapi.io.github.classgraph.json.JSONUtils;
@@ -26,10 +28,18 @@ public class UserController {
     private final UserService userService;
     @Autowired
     private CartService cartService;
+    @Autowired
+    private UserDetailsExtractor userDetailsExtractor;
 
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    public UserController(UserService userService, CartService cartService, UserDetailsExtractor userDetailsExtractor) {
+        this.userService = userService;
+        this.cartService = cartService;
+        this.userDetailsExtractor = userDetailsExtractor;
     }
 
     // TODO: Finalize URL
@@ -39,7 +49,7 @@ public class UserController {
             value = "/api/users"
     )
     public SecureUser getUser() {
-        String username = extractUsername();
+        String username = userDetailsExtractor.extractUsername();
         // Note: some circular mapping of entities of cart and user in foundUser
         User foundUser = userService.getUser(username);
 
@@ -67,11 +77,6 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
     }
 
-    public String extractUsername() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        return userDetails.getUsername();
-    }
 
     private class SecureUser{
         public int id;

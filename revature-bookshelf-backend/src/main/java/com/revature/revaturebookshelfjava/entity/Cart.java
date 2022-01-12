@@ -29,4 +29,7 @@ public class Cart {
 
     private List<Book> books;
 
+    public Cart(List<Book> books) {
+        this.books = books;
+    }
 }

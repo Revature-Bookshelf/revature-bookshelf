@@ -35,7 +35,7 @@ public class SearchResultImplTest {
     }
 
     @BeforeEach
-    void recordTitleMock() {
+    void recordMock() {
         //Title test mocks
         Mockito.when(stringSimilarityMock.similarity("train dog","Train Life")).thenReturn(0.6);
         Mockito.when(stringSimilarityMock.similarity("train dog","How to Train Your Dog and Make it Love You")).thenReturn(0.5);

@@ -43,6 +43,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthRepository authRepository) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.authRepository = authRepository;
+    }
+
     // Called Internally, username always exist
     @Override
     public User getUser(String username) {

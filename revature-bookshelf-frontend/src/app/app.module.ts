@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { BookListComponent } from './book-list/book-list.component';
 import { BookViewComponent } from './book-view/book-view.component';
@@ -17,12 +18,13 @@ import { RouterModule, Routes } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { AddressCardComponent } from './address-card/address-card.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'user-profile', component: UserProfileComponent },
+  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard]},
   { path: 'search', component: SearchComponent },
   { path: 'cart-view', component: CartViewComponent },
   { path: 'cart-access', component: CartAccessComponent },
@@ -41,7 +43,8 @@ const routes: Routes = [
     BookViewComponent,
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    AddressCardComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorInterceptor, multi: true },

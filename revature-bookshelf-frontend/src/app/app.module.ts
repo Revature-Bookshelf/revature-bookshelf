@@ -21,6 +21,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AddressCardComponent } from './address-card/address-card.component';
 import { AddressFormComponent } from './address-form/address-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     PagenotfoundComponent,
     AddressCardComponent,
-    AddressFormComponent
+    AddressFormComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    BrowserModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorInterceptor, multi: true },

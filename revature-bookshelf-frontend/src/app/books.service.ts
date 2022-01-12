@@ -28,4 +28,7 @@ export class BooksService {
   getAvailableBooks() {
     return this.httpClient.get(`${this.apiUrl}/available`)
   }
+  searchResults() {
+    let searchResults = this.searchResults;
+  }
 }

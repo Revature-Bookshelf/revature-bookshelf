@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  searchResults: any;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  // @ts-ignore
+  constructor(public searchResults: SearchResults) {
   }
 
+  ngOnInit() {
+    this.searchResults = this.searchResults.getSearchResults().subscribe({
+      next: (response: any) => {
+        this.searchResults = response
+      }
+    });
+  }
 }

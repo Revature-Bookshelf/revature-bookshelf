@@ -6,23 +6,23 @@
             <div class="row mb-3">
               <h4 class="mb-0">Advanced Search - Enter your search query and select optional filters:</h4>
               <div class="col-sm-9 text-secondary">
-                <input type="text" class="form-control" value="Search" size="45">
+                <input type="text" class="form-control" name=search placeholder="Search" size="45">
               </div>
             </div>
             <div class="row mb-3">
               <div class="col-sm-5">
                 <h5 class="mb-0">Search by:</h5>
                 <input type="radio" id="title" name="search" value="title" checked>
-                <label for="title">Title</label>
+                <label for="title">Title&#160;&#160;&#160;</label>
 
                 <input type="radio" id="Author" name="search" value="author">
-                <label for="author">Author</label>
+                <label for="author">Author&#160;&#160;&#160;</label>
 
                 <input type="radio" id="ISBN" name="search" value="isbn">
                 <label for="isbn">ISBN</label>
 
                   <h5>Genres:</h5>
-                </div><div class="card">  <div class="col justify-content-center">
+                </div><div class="card"><div class="col justify-content-center">
 <span style="white-space:nowrap"><input type="checkbox" id="fiction" name="genres" value="fiction"><label for="fiction">Fiction</label>&#160;&#160;&#160;</span><span style="white-space:nowrap"><input type="checkbox" id="nonfiction" name="genres" value="nonfiction"><label for="nonfiction">     Non-fiction</label>&#160;&#160;&#160;</span><span style="white-space:nowrap"><input type="checkbox" id="computerscience" name="genres" value="computerscience"><label for="computerscience">Computer Science</label>&#160;&#160;&#160;</span>
             </div><div class="col justify-content-center"><span style="white-space:nowrap"><input type="checkbox" id="philosophy" name="genres" value="philosophy"><label for="philosophy">Philosophy</label>&#160;&#160;&#160;</span><span style="white-space:nowrap"><input type="checkbox" id="psychology" name="genres" value="psychology"><label for="psychology">Psychology</label>&#160;&#160;&#160;</span><span style="white-space:nowrap"><input type="checkbox" id="historical" name="genres" value="historical"><label for="historical">Historical</label>&#160;&#160;&#160;</span>
             </div><div class="col justify-content-center"><span style="white-space:nowrap"><input type="checkbox" id="selfhelp" name="genres" value="selfhelp"><label for="selfhelp">Self-Help</label>&#160;&#160;&#160;</span><span style="white-space:nowrap"><input type="checkbox" id="science" name="genres" value="science"><label for="science">Science</label>&#160;&#160;&#160;</span><span style="white-space:nowrap"><input type="checkbox" id="fantasy" name="genres" value="fantasy"><label for="fantasy">Fantasy</label>&#160;&#160;&#160;</span>
@@ -35,8 +35,8 @@
                 <h5 class="mb-0">Publication Date</h5>
               </div>
               <div class="col-sm-9 text-secondary">
-                <input type="text" class="form-control" value="From date">
-                <input type="text" class="form-control" value="To date">
+                <input type="text" class="form-control" placeholder="From date">
+                <input type="text" class="form-control" placeholder="To date">
               </div>
             </div>
             <div class="row mb-3">
@@ -44,8 +44,8 @@
                 <h5 class="mb-0">Page Count</h5>
               </div>
               <div class="col-sm-9 text-secondary">
-                <input type="text" class="form-control" value="Minimum Pages">
-                <input type="text" class="form-control" value="Maximum Pages">
+                <input type="text" class="form-control" placeholder="Minimum Pages">
+                <input type="text" class="form-control" placeholder="Maximum Pages">
               </div>
             </div>
             <div class="row mb-3">
@@ -53,16 +53,49 @@
                 <h5 class="mb-0">Price</h5>
               </div>
               <div class="col-sm-9 text-secondary">
-                <input type="text" class="form-control" value="Minimum Price">
-                <input type="text" class="form-control" value="Maximum Price">
+                <input type="text" class="form-control" placeholder="Minimum Price">
+                <input type="text" class="form-control" placeholder="Maximum Price">
               </div>
             </div>
             <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-9 text-secondary">
-                <input type="button" class="btn btn-primary px-4" value="Submit Search">
+                <input [(ngModel)]="SearchResults" type="button" class="btn btn-primary px-4" value="Submit Search">
               </div>
             </div>
+            <section> <h5> Dynamic search results </h5>
+              <article>
+              <ul><table class="table">
+                  <thead>
+                  <tr>
+                    <td>Item#</td>
+                    <td>Title</td>
+                    <td>Page count</td>
+                    <td>Publish date</td>
+                    <td>ISBN</td>
+                    <td>Author</td>
+                    <td>Genre</td>
+                    <td>Quantity</td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let book of searchResults">
+                    <td>{{book.id}}</td>
+                    <td>{{book.title}}</td>
+                    <td>{{book.pageCount}}</td>
+                    <td>{{book.publishDate.split('T')[0]}}</td>
+                    <td>{{book.isbn}}</td>
+                    <td>{{book.author}}</td>
+                    <!--             <td>{{book.genres[0] ? book.genres[0].name : ''}}</td>
+         -->
+                    <td *ngFor="let prop of book.genres">{{prop.name ? prop.name : ''}}</td>
+
+                  </tr>
+                  </tbody>
+                </table>
+              </ul>
+            </article>
+            </section>
           </div>
         </div>
       </div>

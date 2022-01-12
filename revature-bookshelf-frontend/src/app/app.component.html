@@ -3,35 +3,34 @@
     <a class="navbar-brand" href="#">
       <img class="logo" src="../assets/rev-logo(1).png" alt="Revature logo" />
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#main-navbar"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
+        <li class="nav-item m-2">
+          <a routerLink="books" routerLinkActive="active">View Our Books</a>
+        </li>
+        <li class="nav-item m-2" *ngIf="isLoggedIn">
           <a routerLink="user-profile" routerLinkActive="active">User Profile</a>
         </li>
-        <li class="nav-item" *ngIf="isLoggedIn">
-          <!-- add bellow routerLinkActive="active" [routerLink]="['/login']" -->
-          <button type="button" class="btn btn-primary btn-sm m-3" 
-          value="submit" (click)= handleLogout()>
-          Logout
-      </button>
-        </li>
+        <!-- add bellow routerLinkActive="active" [routerLink]="['/login']" -->
+
       </ul>
-      <app-cart-access></app-cart-access>
-      <a
-        routerLink="search"
-        routerLinkActive="active"
-        class="btn btn-warning btn-sm"
-        type="submit"
-        >Search</a
-      >
+      <app-cart-access *ngIf="isLoggedIn"></app-cart-access>
+
+      <button type="button" class="btn btn-primary btn-sm m-3" routerLinkActive="active" routerLink="/login"
+      value="submit" *ngIf="!isLoggedIn">
+        Login
+      </button>
+      <button type="button" class="btn btn-primary btn-sm m-3" routerLinkActive="active" routerLink="/signup"
+      value="submit" *ngIf="!isLoggedIn">
+        Sign up
+      </button>
+      <button type="button" class="btn btn-primary btn-sm m-3" value="submit" (click)=handleLogout() *ngIf="isLoggedIn">
+        Logout
+      </button>
+      <a routerLink="search" routerLinkActive="active" class="btn btn-warning btn-sm" type="submit">Search</a>
     </div>
   </div>
 </nav>
@@ -45,12 +44,7 @@
       <div class="row mt-3">
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Branding -->
-          <a href="#"
-            ><img
-              class="logo mb-3"
-              src="../assets/rev-logo(1).png"
-              alt="Revature logo"
-          /></a>
+          <a href="#"><img class="logo mb-3" src="../assets/rev-logo(1).png" alt="Revature logo" /></a>
 
           <p>
             Hopscotch Will Smith flexitarian prism, shoreditch chambray semi

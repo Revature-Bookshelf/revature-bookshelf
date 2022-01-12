@@ -7,6 +7,7 @@ import { BookViewComponent } from './book-view/book-view.component';
 import { LoginComponent } from './login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SearchComponent } from './search/search.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartViewComponent } from './cart-view/cart-view.component';
 import { CartAccessComponent } from './cart-access/cart-access.component';
 import { JwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
@@ -45,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     BrowserAnimationsModule,
     MaterialModule
   ],

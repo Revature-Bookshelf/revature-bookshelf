@@ -7,7 +7,7 @@ import jwt_decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
- 
+
 export class UserService {
   endpoint: string = 'http://localhost:9001';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -95,6 +95,5 @@ export class UserService {
     getUser() {
       return this.httpClient.get(`${this.endpoint}/api/users`); 
     }
-
 
 }

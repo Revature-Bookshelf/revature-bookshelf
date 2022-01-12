@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(5)]]
   });
 
-  
+
   // Used to show and hide popup login form
   // showForm() {
   //   this.showModal = true;
@@ -35,8 +35,9 @@ export class LoginComponent implements OnInit {
   handleSubmit(event: Event) {
 
     let credentials = this.loginForm.value;
+    credentials.username = credentials.email
     this.userService.doLogin(credentials);
-    
+
   }
 
   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { }

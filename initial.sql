@@ -172,7 +172,8 @@ INSERT INTO `books` VALUES (1,'Green Eggs and Ham',65,'1960-08-12','0545002850',
 (23,'The Leader\'s Bookshelf',288,'2017-10-03','1682471799','James Stavridis','../assets/images/leadersbookshelf.jpg'),
 (24,'The Inheritance Cycle 4-Book Trade Paperback Boxed Set: Eragon; Eldest; Brisingr; Inheritance',880,'2017-08-10','449813223','Christopher Paolini','../assets/images/inheritance.jpg'),
 (25,'Chronicles of Tao: The Secret Life of a Taoist Master',476,'1993-08-10','0062502190','Deng Ming-Dao','../assets/images/chroniclesoftao.jpg'),
-(26,'Dune',890,'1965-01-08','0593099320','Frank Herbert','../assets/images/dune'),(27,'Design of Everyday Things: Revised',368,'2013-05-11','0465050654','Don Norman','../assets/images/designofeverydaythings.jpg'),
+(26,'Dune',890,'1965-01-08','0593099320','Frank Herbert','../assets/images/dune.jpg'),
+(27,'Design of Everyday Things: Revised',368,'2013-05-11','0465050654','Don Norman','../assets/images/designofeverydaythings.jpg'),
 (28,'Astrophysics for People in a Hurry',222,'2017-02-05','0393609391','Neil deGrasse Tyson','../assets/images/astrophysicsinahurry.jpg'),
 (29,'Tao of Jeet Kune Do: Expanded Edition',250,'2011-01-11','0897502027','Bruce Lee','../assets/images/taojeetkunedo.jpg');
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;

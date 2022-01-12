@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { AddressService } from '../address.service';
 
 
 
@@ -27,9 +28,10 @@ export class UserProfileComponent implements OnInit {
     addresses: any = {}
 
   constructor(
-    public userService: UserService,
+    private userService: UserService,
     private actRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private addressService: AddressService
   ) 
   
   {
@@ -51,39 +53,17 @@ export class UserProfileComponent implements OnInit {
           .getUser()
           .subscribe(user => this.currentUser = user);
 
-    // HARD ENCODED ADDRESSES
-    this.addresses = [
-      {
-          "id": 2,
-          "streetName": "3301 4th Ave S",
-          "city": "Seattle",
-          "state": "Washington",
-          "postalCode": 98134,
-          "types": [
-              {
-                  "id": 2,
-                  "type": "BILLING"
-              }
-          ]
-      },
-      {
-          "id": 1,
-          "streetName": "6305 Martin Luther King Jr Way",
-          "city": "Seattle",
-          "state": "Washington",
-          "postalCode": 98118,
-          "types": [
-              {
-                  "id": 2,
-                  "type": "BILLING"
-              },
-              {
-                  "id": 1,
-                  "type": "SHIPPING"
-              }
-          ]
-      }
-    ]
+
+    this.addressService.getAddress();
+    this.addressService.addressStream
+      .subscribe({
+        next: (e: any) => {
+          let {action, addresses} = e;
+          this.addresses = addresses;
+          console.log(this.addresses)
+        }
+      })
+
   }      
 
 

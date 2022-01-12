@@ -27,7 +27,12 @@ export class UserService {
   }
 
   doLogin(credentials: any) {
-    this.httpClient.post(`${this.endpoint}login`, credentials)
+    console.log(credentials);
+    const sendCreds = {
+      username : credentials.email,
+      password : credentials.password
+    }
+    this.httpClient.post(`${this.endpoint}/login`, sendCreds)
       .subscribe({
         next: (response: any) => {
           localStorage.setItem("token", response.jwt);
@@ -88,7 +93,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
     getUser() {
-      return this.httpClient.get(`${this.endpoint}/api/user/:id`); 
+      return this.httpClient.get(`${this.endpoint}/api/users`); 
     }
 
 

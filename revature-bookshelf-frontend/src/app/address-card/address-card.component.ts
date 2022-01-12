@@ -11,7 +11,7 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./address-card.component.scss']
 })
 export class AddressCardComponent implements OnInit {
-
+  
   addressForm = this.fb.group({
     streetName: ['', Validators.required],
     city: ['', Validators.required],
@@ -41,15 +41,14 @@ export class AddressCardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.addressService.getAddress()
 
-    this.addressService.addressStream
-    .subscribe({
-      next:(e:any)=>{ 
-        let {action,address}=e;
-        this.address= address;
-      }
-    })
+    // this.addressService.addressStream
+    // .subscribe({
+    //   next:(e:any)=>{ 
+    //     let {action,address}=e;
+    //     this.address= address;
+    //   }
+    // })
 
   }
 

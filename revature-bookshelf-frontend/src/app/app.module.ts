@@ -1,40 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaterialModule } from './material.module';
-
 import { BookListComponent } from './book-list/book-list.component';
 import { BookViewComponent } from './book-view/book-view.component';
 import { LoginComponent } from './login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SearchComponent } from './search/search.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartViewComponent } from './cart-view/cart-view.component';
 import { CartAccessComponent } from './cart-access/cart-access.component';
 import { JwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
-import { AuthGuard } from './auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule, Routes } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AddressCardComponent } from './address-card/address-card.component';
 import { AddressFormComponent } from './address-form/address-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard]},
-  { path: 'user-profile/add', component: AddressFormComponent,  canActivate: [AuthGuard]},
-  { path: 'search', component: SearchComponent },
-  { path: 'cart-view', component: CartViewComponent },
-  { path: 'cart-access', component: CartAccessComponent },
-  { path: 'book-view', component: BookViewComponent },
-  { path: 'book-list', component: BookListComponent }
-];
 
 @NgModule({
   declarations: [
@@ -48,6 +34,7 @@ const routes: Routes = [
     LoginComponent,
     SignupComponent,
     HomeComponent,
+    PagenotfoundComponent,
     AddressCardComponent,
     AddressFormComponent
   ],
@@ -55,8 +42,8 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
     AppRoutingModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,

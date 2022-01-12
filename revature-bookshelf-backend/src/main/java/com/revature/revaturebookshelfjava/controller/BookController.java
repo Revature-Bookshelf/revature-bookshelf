@@ -27,6 +27,12 @@ public class BookController {
     private SearchResult searchResult;
     private List<StoreProduct> products = null;
 
+    public BookController(BookRepository bookRepository, FilterService filterService, SearchResult searchResult) {
+        this.bookRepository = bookRepository;
+        this.filterService = filterService;
+        this.searchResult = searchResult;
+    }
+
     @GetMapping("/books")
     public List<Book> getBooks() {
         return bookRepository.findAll();
@@ -63,7 +69,7 @@ public class BookController {
 
     @RequestMapping(method = RequestMethod.GET,
             value = "/books/searchlist/{searchproperty}/{searchinput}")
-    public List<StoreProduct> getSearchResult(@RequestBody Filter filter, @PathVariable("searchproperty") String searchProperty, @PathVariable("searchinput") String userInput) throws UnknownHostException, InvalidSearchPropertyException {
+    public List<StoreProduct> getSearchResult(@RequestBody Filter filter, @PathVariable("searchproperty") String searchProperty, @PathVariable("searchinput") String userInput) throws InvalidSearchPropertyException {
         userInput = userInput.replaceAll("[_]"," ");
         products = bookRepository.findAllAvailable();
         List<StoreProduct> filteredBooks = filterService.doFilter(products,filter);

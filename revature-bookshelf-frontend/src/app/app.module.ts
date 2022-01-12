@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MaterialModule } from './material.module';
 
 import { BookListComponent } from './book-list/book-list.component';
 import { BookViewComponent } from './book-view/book-view.component';
@@ -19,17 +20,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { AddressCardComponent } from './address-card/address-card.component';
+import { AddressFormComponent } from './address-form/address-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard]},
+  { path: 'user-profile/**', component: UserProfileComponent, canActivate: [AuthGuard]},
+  { path: 'user-profile/add', component: AddressFormComponent,  canActivate: [AuthGuard]}.
   { path: 'search', component: SearchComponent },
   { path: 'cart-view', component: CartViewComponent },
   { path: 'cart-access', component: CartAccessComponent },
   { path: 'book-view', component: BookViewComponent },
-  { path: 'book-list', component: BookListComponent },
+  { path: 'book-list', component: BookListComponent }
 ];
 
 @NgModule({
@@ -44,7 +48,8 @@ const routes: Routes = [
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    AddressCardComponent
+    AddressCardComponent,
+    AddressFormComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,9 @@ const routes: Routes = [
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorInterceptor, multi: true },

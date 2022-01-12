@@ -11,26 +11,12 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent implements OnInit {
 
-  // Popup form variables
-  // showModal: boolean;
-  // submitted = false;
-
   message: string = "";
 
   loginForm: FormGroup = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(5)]]
   });
-
-
-  // Used to show and hide popup login form
-  // showForm() {
-  //   this.showModal = true;
-  // }
-
-  // hideForm() {
-  //   this.showModal = false;
-  // }
 
   handleSubmit(event: Event) {
 

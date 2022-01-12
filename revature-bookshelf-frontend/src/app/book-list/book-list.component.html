@@ -1,11 +1,10 @@
-<div class="row col-md-4">
-    <select (change)="getBooks()" [(ngModel)]='selectedValue'>
-        <option value="available" selected>Available</option>
-        <option value="all">All</option>
-    </select>
+<select (change)="getBooks()" [(ngModel)]='selectedValue'>
+    <option value="available" selected>Available</option>
+    <option value="all">All</option>
+</select>
+
+<div>
+    <app-book-view *ngFor="let book of books" [value]="book">
+
+    </app-book-view>
 </div>
-<br>
-
-<app-book-view *ngFor="let book of books" [value]="book">
-
-</app-book-view>

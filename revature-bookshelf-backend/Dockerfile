@@ -13,8 +13,7 @@ COPY --from=builder extracted/spring-boot-loader/ ./
 COPY --from=builder extracted/snapshot-dependencies/ ./
 COPY --from=builder extracted/application/ ./
 
-#Port number
-
-EXPOSE 8080
+#Port number for spring-boot application.yml
+EXPOSE 9001
 
 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]

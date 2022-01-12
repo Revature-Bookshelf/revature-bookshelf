@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-
+import { MaterialModule } from './material.module';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookViewComponent } from './book-view/book-view.component';
 import { LoginComponent } from './login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SearchComponent } from './search/search.component';
 import { CartViewComponent } from './cart-view/cart-view.component';
 import { CartAccessComponent } from './cart-access/cart-access.component';
@@ -18,14 +17,15 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-
+import { AddressCardComponent } from './address-card/address-card.component';
+import { AddressFormComponent } from './address-form/address-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     CartViewComponent,
     UserProfileComponent,
-    EditProfileComponent,
     SearchComponent,
     CartAccessComponent,
     BookListComponent,
@@ -33,7 +33,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    AddressCardComponent,
+    AddressFormComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorInterceptor, multi: true },

@@ -8,12 +8,16 @@ import { CartService } from '../cart.service';
 })
 export class CartViewComponent {
 
-  cart: any = {}
+  cart: any = []
 
   constructor(private cartService: CartService) { }
 
-  /*ngOnInit() {
-    this.cart = this.cartService.cart;
-  }*/
+  ngOnInit() {
+    this.cart = this.cartService.getCart().subscribe({
+      next: (response: any) => {
+        this.cart = response
+      }
+    });
+  }
 
 }

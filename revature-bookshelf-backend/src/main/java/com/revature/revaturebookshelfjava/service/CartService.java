@@ -9,11 +9,13 @@ import java.util.List;
 
 public interface CartService {
 
-    Cart addItem(Book bookId);
+    Cart createCart(Cart cart);
 
-    Cart deleteItem(int bookId) throws CartItemNotExistException;
+    Cart addItem(int bookId, User user);
 
-    Cart updateItem(Book bookId);
+    Cart deleteItem(int bookId, User user) throws CartItemNotExistException;
+
+//    Cart updateItem(Book bookId);
 
     List<Book> getAllItems(User userId);
 

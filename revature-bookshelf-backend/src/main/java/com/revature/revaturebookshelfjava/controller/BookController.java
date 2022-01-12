@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.UnknownHostException;
 import java.util.List;
-
+@RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class BookController {
@@ -27,6 +27,12 @@ public class BookController {
     private SearchResult searchResult;
     private List<StoreProduct> products = null;
 
+    public BookController(BookRepository bookRepository, FilterService filterService, SearchResult searchResult) {
+        this.bookRepository = bookRepository;
+        this.filterService = filterService;
+        this.searchResult = searchResult;
+    }
+
     @GetMapping("/books")
     public List<Book> getBooks() {
         return bookRepository.findAll();
@@ -39,10 +45,11 @@ public class BookController {
 
     @GetMapping("/books/{_genre}")
     public List<Book> getSelectGenre(@PathVariable String _genre) {
+        _genre = _genre.replaceAll("[_]"," ");
         return bookRepository.findSelectGenre(_genre);
     }
 
-    @GetMapping("/genres")
+    @GetMapping("/books/genres")
     public List<Genre> getAllGenres() {
 //        List<Genre> genres = new ArrayList<>();
 //        List<Genre> allGenres = new ArrayList<>();
@@ -61,8 +68,9 @@ public class BookController {
     }
 
     @RequestMapping(method = RequestMethod.GET,
-            value = "/searchlist/{searchproperty}/{searchinput}")
-    public List<StoreProduct> getSearchResult(@RequestBody Filter filter, @PathVariable("searchproperty") String searchProperty, @PathVariable("searchinput") String userInput) throws UnknownHostException, InvalidSearchPropertyException {
+            value = "/books/searchlist/{searchproperty}/{searchinput}")
+    public List<StoreProduct> getSearchResult(@RequestBody Filter filter, @PathVariable("searchproperty") String searchProperty, @PathVariable("searchinput") String userInput) throws InvalidSearchPropertyException {
+        userInput = userInput.replaceAll("[_]"," ");
         products = bookRepository.findAllAvailable();
         List<StoreProduct> filteredBooks = filterService.doFilter(products,filter);
         if (searchProperty.equalsIgnoreCase("title")) {

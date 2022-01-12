@@ -12,20 +12,24 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "carts")
-public class Cart  {
+public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "cart")
     private User user;
 
-    @ManyToOne
-    @JoinTable( name = "cart_join",
-    joinColumns = { @JoinColumn(name = "cart_id")},
-    inverseJoinColumns = { @JoinColumn(name = "book_id")})
-    private Book books;
+    @ManyToMany
+    @JoinTable(name = "cart_join",
+            joinColumns = {@JoinColumn(name = "cart_id")},
+            inverseJoinColumns = {@JoinColumn(name = "book_id")}
+    )
 
+    private List<Book> books;
+
+    public Cart(List<Book> books) {
+        this.books = books;
+    }
 }

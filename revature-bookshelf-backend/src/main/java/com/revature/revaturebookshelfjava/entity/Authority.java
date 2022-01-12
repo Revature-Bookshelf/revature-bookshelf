@@ -31,4 +31,8 @@ public class Authority {
                 "authority='" + authority + '\'' +
                 '}';
     }
+
+    public Authority(String authority) {
+        this.authority = authority;
+    }
 }

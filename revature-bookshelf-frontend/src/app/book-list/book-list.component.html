@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<select (change)="getBooks()" [(ngModel)]='selectedValue'>
-    <option value="available">available</option>
-    <option value="all" selected>All</option>
-</select>
-<div>
-    <app-book-view *ngFor="let book of books" [value]="book">
-=======
 <div class="row col-md-4">
     <select (change)="getBooks()" [(ngModel)]='selectedValue'>
         <option value="available" selected>Available</option>
@@ -15,7 +7,6 @@
 <br>
 
 <app-book-view *ngFor="let book of books" [value]="book">
->>>>>>> 5606c88aef162f97238d9679abf53cd0c34cef51
 
-    </app-book-view>
+</app-book-view>
 </div>

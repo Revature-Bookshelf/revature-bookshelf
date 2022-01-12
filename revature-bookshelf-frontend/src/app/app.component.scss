@@ -8,11 +8,20 @@ $secondary-blue: #72a4c2;
 $secondary-yllw: #fcb414;
 $secondary-gry: #b9b9ba;
 
-  // Logo
-  .logo {
-    width: 150px;
-  }
+// Logo
+.logo {
+  width: 150px;
+}
 
-  .navbar {
-    margin-bottom: 0px;
-  }
+.navbar {
+  margin-bottom: 0px;
+}
+
+// Footer
+footer {
+  font-size: 90%;
+}
+
+footer h6 {
+  color: $primary-org;
+}

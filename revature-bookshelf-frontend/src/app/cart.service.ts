@@ -23,11 +23,10 @@ export class CartService {
   }
 
   deleteItems(bookId: number) {
-    return this.httpClient.delete(`${this.apiUrl}/delete/{bookId}`);
+    return this.httpClient.delete(`${this.apiUrl}/delete/${bookId}`);
   }
 
-  clearCart() {
-    this.items = [];
-    return this.items;
-  }
+  // clearCart() {
+  //   return this.httpClient.delete(`${this.apiUrl}/delete/{bookId}`);
+  // }
 }

@@ -17,17 +17,16 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard]},
-  { path: 'user-profile/add', component: AddressFormComponent,  canActivate: [AuthGuard]},
-  { path: 'address-card', component: AddressCardComponent},
+  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
+  { path: 'user-profile/add', component: AddressFormComponent, canActivate: [AuthGuard] },
+  { path: 'address-card', component: AddressCardComponent },
   { path: 'search', component: SearchComponent },
   { path: 'cart-view', component: CartViewComponent },
   { path: 'cart-access', component: CartAccessComponent },
-  //{ path: 'books', component: BookViewComponent },
   { path: 'books', component: BookListComponent }
 ];
 
-@NgModule({ 
+@NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

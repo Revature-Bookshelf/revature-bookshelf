@@ -1,0 +1,14 @@
+com.revature.revaturebookshelfjava
+com.revature.revaturebookshelfjava.authenicator.controller
+com.revature.revaturebookshelfjava.authenicator.extractor
+com.revature.revaturebookshelfjava.authenicator.filter
+com.revature.revaturebookshelfjava.authenicator.filter.config
+com.revature.revaturebookshelfjava.authenicator.model
+com.revature.revaturebookshelfjava.authenicator.utils
+com.revature.revaturebookshelfjava.controller
+com.revature.revaturebookshelfjava.controller.payload
+com.revature.revaturebookshelfjava.entity
+com.revature.revaturebookshelfjava.exception
+com.revature.revaturebookshelfjava.repository
+com.revature.revaturebookshelfjava.search_algorithm
+com.revature.revaturebookshelfjava.service
